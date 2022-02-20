@@ -8,7 +8,7 @@ export const Wrapper: FC = (props) => {
   return (
     <MainContainer style={styles.safe} {...rest}>
       <Header />
-      <SafeAreaView>{children}</SafeAreaView>
+      <SafeAreaView style={{ flex: 1 }}>{children}</SafeAreaView>
     </MainContainer>
   );
 };
