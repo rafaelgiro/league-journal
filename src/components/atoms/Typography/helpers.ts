@@ -1,11 +1,4 @@
-type variant =
-  | "title-1"
-  | "title-2"
-  | "title-3"
-  | "body-1"
-  | "label"
-  | "button"
-  | "eyebrown";
+import { variant } from "./Typography";
 
 interface styleI {
   fontSize: string;
@@ -41,9 +34,14 @@ export const variants: Record<variant, styleI> = {
     letterSpacing: "0",
   },
   label: {
-    fontSize: "16px",
+    fontSize: "14px",
     fontFamily: "PatrickHand_400Regular",
     letterSpacing: "1px",
+  },
+  "label-small": {
+    fontSize: "12px",
+    fontFamily: "PatrickHand_400Regular",
+    letterSpacing: "0px",
   },
   eyebrown: {
     fontSize: "12px",

@@ -14,5 +14,7 @@ export const Wrapper: FC = (props) => {
 };
 
 const styles = StyleSheet.create({
-  safe: { paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0 },
+  safe: {
+    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 24,
+  },
 });

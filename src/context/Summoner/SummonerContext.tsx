@@ -15,7 +15,7 @@ export const SummonerContext = createContext<SummonerContextProps>({
 });
 
 export const SummonerProvider: FC = (props) => {
-  const [server, setServer] = useState("br");
+  const [server, setServer] = useState("BR");
   const [summonerName, setSummonerName] = useState("");
 
   return (

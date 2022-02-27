@@ -7,15 +7,18 @@ import {
 
 import { variants } from "./helpers";
 
+export type variant =
+  | "title-1"
+  | "title-2"
+  | "title-3"
+  | "body-1"
+  | "label"
+  | "label-small"
+  | "button"
+  | "eyebrown";
+
 interface TypographyProps extends TextProps {
-  variant:
-    | "title-1"
-    | "title-2"
-    | "title-3"
-    | "body-1"
-    | "label"
-    | "button"
-    | "eyebrown";
+  variant: variant;
 }
 
 const BaseTypography = styled.Text<TypographyProps>`
