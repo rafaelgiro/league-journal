@@ -2,9 +2,10 @@ import { TouchableOpacity } from "react-native";
 import Svg, { Path } from "react-native-svg";
 import { useTheme } from "@emotion/react";
 
+import { Typography } from "../Typography";
+
 import { RadioButtonProps } from "./interfaces";
 import { RadioButtonContainer } from "./styles";
-import { Typography } from "../Typography";
 
 export const RadioButton = (props: RadioButtonProps) => {
   const { isChecked, handlePress, label, name, ...rest } = props;

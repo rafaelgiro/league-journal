@@ -1,12 +1,14 @@
 import { View } from "react-native";
+
 import { Typography } from "../Typography";
 import { BottomLane } from "./BottomLane";
-import { lanes } from "./helpers";
-import { LaneIconProps } from "./interfaces";
 import { Jungle } from "./Jungle";
 import { MidLane } from "./MidLane";
-import { LaneIconContainer } from "./styles";
 import { TopLane } from "./TopLane";
+
+import { lanes } from "./helpers";
+import { LaneIconProps } from "./interfaces";
+import { LaneIconContainer } from "./styles";
 
 export const BaseLaneIcon = (props: LaneIconProps) => {
   const { lane } = props;

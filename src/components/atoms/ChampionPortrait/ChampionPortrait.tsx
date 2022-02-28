@@ -1,6 +1,8 @@
 import { TouchableOpacity } from "react-native";
-import { ChampionPortraitProps } from "./interfaces";
+
 import { PortraitBase } from "./PortraitBase";
+
+import { ChampionPortraitProps } from "./interfaces";
 
 export const ChampionPortrait = (props: ChampionPortraitProps) => {
   const { handlePress, ...rest } = props;

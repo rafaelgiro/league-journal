@@ -1,7 +1,8 @@
 import { useTheme } from "@emotion/react";
-import { TouchableOpacity, StyleSheet } from "react-native";
+import { TouchableOpacity } from "react-native";
 import Svg, { Path, Rect } from "react-native-svg";
 import { Typography } from "../Typography";
+
 import { ButtonProps } from "./interface";
 import { StyledSvgContainer } from "./styles";
 

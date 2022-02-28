@@ -1,17 +1,20 @@
 import { useState } from "react";
 import { View } from "react-native";
 import Svg, { Path } from "react-native-svg";
+import { AddButton } from "../../../components/atoms/AddButton";
 
 import { ChampionPortrait } from "../../../components/atoms/ChampionPortrait/ChampionPortrait";
 import { Checkbox } from "../../../components/atoms/Checkbox";
 import { LaneIcon } from "../../../components/atoms/LaneIcon";
 import { RadioButton } from "../../../components/atoms/RadioButton";
+import { YesNoButton } from "../../../components/atoms/YesNoButton";
 import { StartupStep } from "../../../components/templates/StartupStep";
 
 export const StartupSecondStep = () => {
   const [activeChampions, setActionChampions] = useState<string[]>([]);
   const [isPostGame, setIsPostGame] = useState(false);
   const [typeOfAnswer, setTypeOfAnswer] = useState("text");
+  const [yesNo, setYesNo] = useState("yes");
 
   function handlePress(championId: string) {
     if (activeChampions.includes(championId)) {
@@ -109,6 +112,21 @@ export const StartupSecondStep = () => {
         <LaneIcon lane="jungle" />
         <LaneIcon lane="mid" />
         <LaneIcon lane="bot" />
+      </View>
+      <View style={{ flexDirection: "row", justifyContent: "space-evenly" }}>
+        <YesNoButton
+          isChecked={yesNo === "yes"}
+          handlePress={() => setYesNo("yes")}
+          type="yes"
+        />
+        <YesNoButton
+          isChecked={yesNo === "no"}
+          handlePress={() => setYesNo("no")}
+          type="no"
+        />
+      </View>
+      <View style={{ flexDirection: "row", justifyContent: "center" }}>
+        <AddButton handlePress={() => {}} />
       </View>
     </StartupStep>
   );
