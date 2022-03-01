@@ -5,14 +5,14 @@ import { PortraitBase } from "./PortraitBase";
 import { ChampionPortraitProps } from "./interfaces";
 
 export const ChampionPortrait = (props: ChampionPortraitProps) => {
-  const { handlePress, ...rest } = props;
+  const { handlePress, ...other } = props;
 
   if (handlePress)
     return (
       <TouchableOpacity onPress={() => handlePress(props.championId)}>
-        <PortraitBase {...rest} />
+        <PortraitBase {...other} />
       </TouchableOpacity>
     );
 
-  return <PortraitBase {...rest} />;
+  return <PortraitBase {...other} />;
 };

@@ -4,9 +4,9 @@ import { Header } from "../../organisms/Header";
 import { MainContainer } from "./styles";
 
 export const Wrapper: FC = (props) => {
-  const { children, ...rest } = props;
+  const { children, ...other } = props;
   return (
-    <MainContainer style={styles.safe} {...rest}>
+    <MainContainer style={styles.safe} {...other}>
       <Header />
       <SafeAreaView style={{ flex: 1 }}>{children}</SafeAreaView>
     </MainContainer>

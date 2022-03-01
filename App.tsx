@@ -22,7 +22,7 @@ const darkTheme = {
   themeName: "dark",
   colors: {
     background: "#000000",
-    text: "#FFFFFF",
+    text: "#F2F2F2",
     secondary: "#808080",
   },
 };
