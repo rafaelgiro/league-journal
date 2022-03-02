@@ -11,7 +11,7 @@ import { LaneIconProps } from "./interfaces";
 import { LaneIconContainer } from "./styles";
 
 export const BaseLaneIcon = (props: LaneIconProps) => {
-  const { lane } = props;
+  const { lane, ...other } = props;
 
   function renderIcon() {
     switch (lane) {
@@ -30,7 +30,7 @@ export const BaseLaneIcon = (props: LaneIconProps) => {
   }
 
   return (
-    <LaneIconContainer>
+    <LaneIconContainer {...other}>
       <View style={{ height: 56 }}>{renderIcon()}</View>
       <Typography variant="body-1">{lanes[lane]}</Typography>
     </LaneIconContainer>

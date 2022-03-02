@@ -9,11 +9,18 @@ export const AccordionArrow = styled.View<{ isOpen: boolean }>`
       : ""}
 `;
 
-export const AccordionItemContainer = styled.View``;
+export const AccordionItemContainer = styled.View`
+  margin: 8px 0;
+`;
+
+export const DividerContainer = styled.View`
+  align-items: center;
+  margin-bottom: 8px;
+`;
 
 export const AccordtionItemHeader = styled.View`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 16px 0;
+  padding: 4px 0;
 `;

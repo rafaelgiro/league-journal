@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Svg, { Path } from "react-native-svg";
 import { useTheme } from "@emotion/react";
 import {
@@ -10,6 +10,11 @@ import { Typography } from "../Typography";
 
 import { StyledTextArea, TextAreaContainer } from "./styles";
 import { TextAreaProps } from "./interfaces";
+import {
+  NativeSyntheticEvent,
+  TextInput,
+  TextInputFocusEventData,
+} from "react-native";
 
 export const TextArea = (props: TextAreaProps) => {
   const {
@@ -17,25 +22,32 @@ export const TextArea = (props: TextAreaProps) => {
     numberOfLines = 6,
     placeholder = "Type here...",
     style,
+    onChangeText,
     ...other
   } = props;
   const { colors } = useTheme();
   const [fontLoaded] = useFonts({
     PatrickHand_400Regular,
   });
+  const [val, setVal] = useState("");
+
+  function handleChange() {
+    if (onChangeText) onChangeText(val);
+  }
 
   if (!fontLoaded) return null;
 
   return (
-    // <TextAreaContainer style={style}>
-    // {label && <Typography variant="label">{label}</Typography>}
     <StyledTextArea
       {...other}
+      value={val}
+      onChangeText={(v) => setVal(v)}
+      multiline
+      onBlur={handleChange}
       placeholder={placeholder}
       numberOfLines={numberOfLines}
       placeholderTextColor={colors.secondary}
       selectionColor={colors.text}
     />
-    // </TextAreaContainer>
   );
 };
