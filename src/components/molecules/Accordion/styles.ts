@@ -24,3 +24,9 @@ export const AccordtionItemHeader = styled.View`
   align-items: center;
   padding: 4px 0;
 `;
+
+export const ActionsContainer = styled.View`
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-bottom: 16px;
+`;

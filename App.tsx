@@ -15,6 +15,7 @@ const lightTheme = {
     background: "#FFFFFF",
     text: "#000000",
     secondary: "#808080",
+    error: "#E03F3F",
   },
 };
 
@@ -24,6 +25,7 @@ const darkTheme = {
     background: "#000000",
     text: "#F2F2F2",
     secondary: "#808080",
+    error: "#E03F3F",
   },
 };
 

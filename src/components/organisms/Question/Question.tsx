@@ -36,7 +36,7 @@ export const Question = (props: QuestionProps) => {
   }, [isPreGame, isPostGame, category, answer]);
 
   return (
-    <AccordionItem title={title} {...other}>
+    <AccordionItem title={title} {...other} isAnswering={isAnswering}>
       {!isAnswering && (
         <>
           <TimingContainer>

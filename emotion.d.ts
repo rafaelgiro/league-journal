@@ -7,6 +7,7 @@ declare module "@emotion/react" {
       background: string;
       text: string;
       secondary: string;
+      error: string;
     };
     setIsDark: React.Dispatch<React.SetStateAction<boolean>>;
   }

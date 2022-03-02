@@ -1,4 +1,11 @@
-import { TouchableOpacity, View } from "react-native";
+import {
+  NativeSyntheticEvent,
+  TextInput,
+  TextInputChangeEventData,
+  TextInputKeyPressEventData,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import Svg, { Path } from "react-native-svg";
 import { useTheme } from "@emotion/react";
 import Collapsible from "react-native-collapsible";
@@ -11,19 +18,48 @@ import {
   DividerContainer,
   AccordtionItemHeader,
   AccordionItemContainer,
+  ActionsContainer,
 } from "./styles";
+import { useEffect, useRef, useState } from "react";
+import { EditButton } from "./EditButton";
+import { DeleteButton } from "./DeleteButton";
 
 export const AccordionItem = (props: AccordionItemProps) => {
-  const { handlePress, isOpen, title, children, ...other } = props;
+  const { handlePress, isOpen, title, children, isAnswering, ...other } = props;
+  const [isEditing, setIsEditing] = useState(false);
+  const [newTitle, setNewTitle] = useState(title);
+  const titleRef = useRef<TextInput>(null);
   const theme = useTheme();
+
+  function handleNewTitleChange(
+    e: NativeSyntheticEvent<TextInputKeyPressEventData>
+  ) {
+    if (e.nativeEvent.key === "Enter") setIsEditing(false);
+  }
+
+  useEffect(() => {
+    if (isEditing) titleRef.current?.focus();
+    else console.log("retorna estado do título novo");
+  }, [isEditing]);
 
   if (!handlePress) return null;
 
   return (
     <AccordionItemContainer {...other}>
-      <TouchableOpacity onPress={() => handlePress()}>
+      <TouchableOpacity onPress={() => !isEditing && handlePress()}>
         <AccordtionItemHeader>
-          <Typography variant="title-2">{title}</Typography>
+          {isEditing ? (
+            <TextInput
+              value={newTitle}
+              onChangeText={setNewTitle}
+              ref={titleRef}
+              multiline
+              onKeyPress={handleNewTitleChange}
+            />
+          ) : (
+            <Typography variant="title-2">{title}</Typography>
+          )}
+
           <AccordionArrow isOpen={isOpen!}>
             <Svg width="13" height="9" viewBox="0 0 13 9" fill="none">
               <Path
@@ -37,6 +73,12 @@ export const AccordionItem = (props: AccordionItemProps) => {
       </TouchableOpacity>
       <Collapsible collapsed={!isOpen}>
         {children}
+        {!isAnswering && (
+          <ActionsContainer>
+            <EditButton isEditing={isEditing} setIsEditing={setIsEditing} />
+            <DeleteButton onDelete={console.log} title={title} />
+          </ActionsContainer>
+        )}
         <DividerContainer>
           <Svg width="286" height="16" viewBox="0 0 286 16" fill="none">
             <Path
