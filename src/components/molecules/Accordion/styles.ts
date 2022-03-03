@@ -30,3 +30,9 @@ export const ActionsContainer = styled.View`
   justify-content: space-evenly;
   margin-bottom: 16px;
 `;
+
+export const EditableQuestionInput = styled.TextInput`
+  font-size: 20px;
+  font-family: "PatrickHand_400Regular";
+  letter-spacing: 1px;
+`;

@@ -4,8 +4,8 @@ import { YesOrNoProps } from "./interfaces";
 import { YesOrNoContainer } from "./styles";
 
 export const YesOrNo = (props: YesOrNoProps) => {
-  const { handleChange } = props;
-  const [answer, setAnswer] = useState<"yes" | "no">("yes");
+  const { handleChange, initialValue } = props;
+  const [answer, setAnswer] = useState<"yes" | "no">(initialValue || "yes");
 
   useEffect(() => {
     handleChange(answer);

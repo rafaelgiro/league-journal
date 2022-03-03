@@ -3,7 +3,7 @@ import { View, ViewProps } from "react-native";
 
 export const Accordion = (props: ViewProps) => {
   const { children, ...other } = props;
-  const [currentOpen, setCurrentOpen] = useState(-1);
+  const [currentOpen, setCurrentOpen] = useState(0);
 
   function renderChildrenWithProps() {
     return Children.map(children, (child, index) => {

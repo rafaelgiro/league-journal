@@ -5,13 +5,13 @@ import { MultipleChampionsProps } from "./interfaces";
 import { ChampionsContainer, Portraits, Team } from "./styles";
 
 export const MultipleChampionsAnswer = (props: MultipleChampionsProps) => {
-  const { allyChampions, enemyChampions, handleChange } = props;
+  const { allyChampions, enemyChampions, handleChange, initialValue } = props;
   const [selectedAlliedChampions, setSelectedAlliedChampions] = useState<
     string[]
-  >([]);
+  >(initialValue?.ally || []);
   const [selectedEnemyChampions, setSelectedEnemyChampions] = useState<
     string[]
-  >([]);
+  >(initialValue?.enemy || []);
 
   function handleAllyPress(champion: string) {
     if (selectedAlliedChampions.includes(champion)) {

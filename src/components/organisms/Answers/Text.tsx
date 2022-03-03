@@ -4,16 +4,11 @@ import { TextProps } from "./interfaces";
 import { TextContainer } from "./styles";
 
 export const Text = (props: TextProps) => {
-  const { handleChange } = props;
-  const [text, setText] = useState<string>("");
-
-  useEffect(() => {
-    handleChange(text);
-  }, [text]);
+  const { handleChange, initialValue } = props;
 
   return (
     <TextContainer>
-      <TextArea onChangeText={(val) => setText(val)} value={text} />
+      <TextArea onChangeText={handleChange} initialValue={initialValue} />
     </TextContainer>
   );
 };

@@ -5,8 +5,10 @@ import { SingleChampionProps } from "./interfaces";
 import { ChampionsContainer, Portraits, Team } from "./styles";
 
 export const SingleChampionAnswer = (props: SingleChampionProps) => {
-  const { allyChampions, enemyChampions, handleChange } = props;
-  const [selectedChampion, setSelectedChampion] = useState<string>("");
+  const { allyChampions, enemyChampions, handleChange, initialValue } = props;
+  const [selectedChampion, setSelectedChampion] = useState<string>(
+    initialValue || ""
+  );
 
   useEffect(() => {
     handleChange(selectedChampion);

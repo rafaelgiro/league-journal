@@ -1,16 +1,17 @@
 import {
   NativeSyntheticEvent,
   TextInput,
-  TextInputChangeEventData,
   TextInputKeyPressEventData,
   TouchableOpacity,
-  View,
 } from "react-native";
+import { useEffect, useRef, useState } from "react";
 import Svg, { Path } from "react-native-svg";
 import { useTheme } from "@emotion/react";
 import Collapsible from "react-native-collapsible";
 
 import { Typography } from "../../atoms/Typography";
+import { EditButton } from "./EditButton";
+import { DeleteButton } from "./DeleteButton";
 
 import { AccordionItemProps } from "./interfaces";
 import {
@@ -19,13 +20,19 @@ import {
   AccordtionItemHeader,
   AccordionItemContainer,
   ActionsContainer,
+  EditableQuestionInput,
 } from "./styles";
-import { useEffect, useRef, useState } from "react";
-import { EditButton } from "./EditButton";
-import { DeleteButton } from "./DeleteButton";
 
 export const AccordionItem = (props: AccordionItemProps) => {
-  const { handlePress, isOpen, title, children, isAnswering, ...other } = props;
+  const {
+    handlePress,
+    isOpen,
+    title,
+    children,
+    isAnswering,
+    setTitle,
+    ...other
+  } = props;
   const [isEditing, setIsEditing] = useState(false);
   const [newTitle, setNewTitle] = useState(title);
   const titleRef = useRef<TextInput>(null);
@@ -39,7 +46,7 @@ export const AccordionItem = (props: AccordionItemProps) => {
 
   useEffect(() => {
     if (isEditing) titleRef.current?.focus();
-    else console.log("retorna estado do título novo");
+    else setTitle(newTitle);
   }, [isEditing]);
 
   if (!handlePress) return null;
@@ -49,7 +56,7 @@ export const AccordionItem = (props: AccordionItemProps) => {
       <TouchableOpacity onPress={() => !isEditing && handlePress()}>
         <AccordtionItemHeader>
           {isEditing ? (
-            <TextInput
+            <EditableQuestionInput
               value={newTitle}
               onChangeText={setNewTitle}
               ref={titleRef}

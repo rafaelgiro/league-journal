@@ -6,9 +6,10 @@ import { LaneProps } from "./interfaces";
 import { LaneContainer } from "./styles";
 
 export const LaneAnswer = (props: LaneProps) => {
-  const { handleChange } = props;
-  const [selectedLane, setSelectedLane] =
-    useState<LaneIconProps["lane"]>("top");
+  const { handleChange, initialValue } = props;
+  const [selectedLane, setSelectedLane] = useState<string>(
+    initialValue || "top"
+  );
 
   useEffect(() => {
     handleChange(selectedLane);

@@ -12,7 +12,14 @@ import {
 import { QuestionAnswerProps } from "./interfaces";
 
 export const QuestionAnswer = (props: QuestionAnswerProps) => {
-  const { id, type, allyChampions, enemyChampions, handleChange } = props;
+  const {
+    id,
+    type,
+    allyChampions,
+    enemyChampions,
+    handleChange,
+    initialValue,
+  } = props;
 
   switch (type) {
     case "multiple-champions":
@@ -23,6 +30,7 @@ export const QuestionAnswer = (props: QuestionAnswerProps) => {
           allyChampions={allyChampions}
           enemyChampions={enemyChampions}
           handleChange={(val) => handleChange(id, val)}
+          initialValue={initialValue}
         />
       );
 
@@ -34,17 +42,33 @@ export const QuestionAnswer = (props: QuestionAnswerProps) => {
           allyChampions={allyChampions}
           enemyChampions={enemyChampions}
           handleChange={(val) => handleChange(id, val)}
+          initialValue={initialValue}
         />
       );
 
     case "lane":
-      return <LaneAnswer handleChange={(val) => handleChange(id, val)} />;
+      return (
+        <LaneAnswer
+          handleChange={(val) => handleChange(id, val)}
+          initialValue={initialValue}
+        />
+      );
 
     case "yesno":
-      return <YesOrNo handleChange={(val) => handleChange(id, val)} />;
+      return (
+        <YesOrNo
+          handleChange={(val) => handleChange(id, val)}
+          initialValue={initialValue}
+        />
+      );
 
     case "text":
-      return <Text handleChange={(val) => handleChange(id, val)} />;
+      return (
+        <Text
+          handleChange={(val) => handleChange(id, val)}
+          initialValue={initialValue}
+        />
+      );
 
     default:
       return (

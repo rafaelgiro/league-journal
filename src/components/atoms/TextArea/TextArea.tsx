@@ -1,21 +1,12 @@
-import { useRef, useState } from "react";
-import Svg, { Path } from "react-native-svg";
+import { useState } from "react";
 import { useTheme } from "@emotion/react";
 import {
   useFonts,
   PatrickHand_400Regular,
 } from "@expo-google-fonts/patrick-hand";
 
-import { Typography } from "../Typography";
-
-import { StyledTextArea, TextAreaContainer } from "./styles";
+import { StyledTextArea } from "./styles";
 import { TextAreaProps } from "./interfaces";
-import {
-  NativeSyntheticEvent,
-  TextInput,
-  TextInputFocusEventData,
-} from "react-native";
-
 export const TextArea = (props: TextAreaProps) => {
   const {
     label,
@@ -23,13 +14,14 @@ export const TextArea = (props: TextAreaProps) => {
     placeholder = "Type here...",
     style,
     onChangeText,
+    initialValue,
     ...other
   } = props;
   const { colors } = useTheme();
   const [fontLoaded] = useFonts({
     PatrickHand_400Regular,
   });
-  const [val, setVal] = useState("");
+  const [val, setVal] = useState(initialValue || "");
 
   function handleChange() {
     if (onChangeText) onChangeText(val);

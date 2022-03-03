@@ -10,33 +10,60 @@ import { QuestionAnswer } from "./QuestionAnswer";
 import { categories } from "./helpers";
 import { QuestionProps } from "./interfaces";
 import { CategoriesContainer, TimingContainer } from "./styles";
+import { defaultAnswers } from "../Answers/helpers";
 
 export const Question = (props: QuestionProps) => {
   const {
     answer: initialValue,
     isAnswering,
-    title,
+    title: initialTitle,
     type,
     allyChampions,
     enemyChampions,
     id,
+    isPostGame: initialPostgame,
+    isPreGame: initialPregame,
+    handleChange: onChange,
     ...other
   } = props;
-  const [isPreGame, setIsPreGame] = useState(false);
-  const [isPostGame, setIsPostGame] = useState(false);
-  const [category, setCategory] = useState<Question["type"]>("text");
-  const [answer, setAnswer] = useState<any>();
+  const [isPreGame, setIsPreGame] = useState(initialPregame);
+  const [isPostGame, setIsPostGame] = useState(initialPostgame);
+  const [category, setCategory] = useState<Question["type"]>(type);
+  const [answer, setAnswer] = useState<any>(initialValue);
+  const [title, setTitle] = useState(initialTitle);
 
-  function handleChange(id: string, value: any) {
-    setAnswer(value);
+  function handleChange(id: number, ans: any) {
+    setAnswer(ans);
   }
 
   useEffect(() => {
-    console.log({ id, answer, isPreGame, isPostGame, category });
-  }, [isPreGame, isPostGame, category, answer]);
+    console.log("answer", answer);
+
+    if (onChange)
+      onChange(id, {
+        id,
+        answer,
+        isPreGame,
+        isPostGame,
+        type: category,
+        title,
+        isActive: true,
+        enemyChampions,
+        allyChampions,
+      });
+  }, [isPreGame, isPostGame, answer, title]);
+
+  useEffect(() => {
+    setAnswer(defaultAnswers[category]);
+  }, [category]);
 
   return (
-    <AccordionItem title={title} {...other} isAnswering={isAnswering}>
+    <AccordionItem
+      title={title}
+      setTitle={setTitle}
+      isAnswering={isAnswering}
+      {...other}
+    >
       {!isAnswering && (
         <>
           <TimingContainer>
@@ -75,6 +102,7 @@ export const Question = (props: QuestionProps) => {
         allyChampions={allyChampions}
         enemyChampions={enemyChampions}
         handleChange={handleChange}
+        initialValue={initialValue}
       />
     </AccordionItem>
   );

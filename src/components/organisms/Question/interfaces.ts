@@ -4,6 +4,8 @@ export interface QuestionProps extends Question, ViewProps {
   isAnswering: boolean;
   allyChampions?: Champion[];
   enemyChampions?: Champion[];
+  handleChange: (id: number, newAnswer: any) => void;
+  initialValue?: any;
 }
 
 export interface QuestionAnswerProps {
@@ -11,5 +13,6 @@ export interface QuestionAnswerProps {
   type: Question["type"];
   allyChampions?: Champion[];
   enemyChampions?: Champion[];
-  handleChange: Question["handleChange"];
+  handleChange: QuestionProps["handleChange"];
+  initialValue: QuestionProps["initialValue"];
 }

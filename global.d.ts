@@ -69,9 +69,13 @@ interface Champion {
 }
 
 interface Question {
-  id: string;
+  id: number;
+  isActive: boolean;
   answer?: any;
   title: string;
-  handleChange: (id: string, answer: any) => void;
   type: "text" | "single-champion" | "multiple-champions" | "lane" | "yesno";
+  enemyChampions?: Champion[];
+  allyChampions?: Champion[];
+  isPreGame: boolean;
+  isPostGame: boolean;
 }

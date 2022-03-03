@@ -1,65 +1,81 @@
-import { useState } from "react";
-import { ScrollView, View } from "react-native";
-import Svg, { Path } from "react-native-svg";
-import { AddButton } from "../../../components/atoms/AddButton";
-
-import { ChampionPortrait } from "../../../components/atoms/ChampionPortrait/ChampionPortrait";
-import { Checkbox } from "../../../components/atoms/Checkbox";
-import { LaneIcon } from "../../../components/atoms/LaneIcon";
-import { RadioButton } from "../../../components/atoms/RadioButton";
-import { TextArea } from "../../../components/atoms/TextArea";
-import { YesNoButton } from "../../../components/atoms/YesNoButton";
-import {
-  Accordion,
-  AccordionItem,
-} from "../../../components/molecules/Accordion";
-import { MultipleChampionsAnswer } from "../../../components/organisms/Answers/MultipleChampions";
+import { useEffect, useState } from "react";
+import { useNavigation } from "@react-navigation/native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { Accordion } from "../../../components/molecules/Accordion";
 import { Question } from "../../../components/organisms/Question";
 import { StartupStep } from "../../../components/templates/StartupStep";
+import { initialQuestion } from "./helpers";
+import { Button } from "react-native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
 export const StartupSecondStep = () => {
-  const [activeChampions, setActionChampions] = useState<string[]>([]);
-  const [isPostGame, setIsPostGame] = useState(false);
-  const [typeOfAnswer, setTypeOfAnswer] = useState("text");
-  const [yesNo, setYesNo] = useState("yes");
+  const [questions, setQuestions] = useState<Question[]>([]);
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
-  function handlePress(championId: string) {
-    if (activeChampions.includes(championId)) {
-      setActionChampions(activeChampions.filter((c) => c !== championId));
-    } else {
-      setActionChampions([...activeChampions, championId]);
+  useEffect(() => {
+    async function getData() {
+      try {
+        const jsonValue = await AsyncStorage.getItem("questions");
+        if (jsonValue) setQuestions(JSON.parse(jsonValue));
+        else {
+          const firstQuestion = JSON.stringify([initialQuestion]);
+          await AsyncStorage.setItem("questions", firstQuestion);
+          setQuestions([initialQuestion]);
+        }
+      } catch (e) {
+        // error reading value
+      }
+    }
+
+    getData();
+  }, []);
+
+  function handleChange(id: number, newValue: Question) {
+    console.log("rodou aqui");
+    const newQuestions = [...questions];
+    const questionIndex = newQuestions.findIndex((q) => q.id === id);
+    newQuestions[questionIndex] = newValue;
+    setQuestions(newQuestions);
+  }
+
+  async function debug() {
+    try {
+      await AsyncStorage.removeItem("questions");
+    } catch (e) {
+      // error reading value
     }
   }
 
-  const allyChampions: Champion[] = [
-    { key: "Sion-ally", id: "Sion", name: "Sion" },
-    { key: "Ivern-ally", id: "Ivern", name: "Ivern" },
-    { key: "AurelionSol-ally", id: "AurelionSol", name: "Aurelion Sol" },
-    { key: "Jhin-ally", id: "Jhin", name: "Jhin" },
-    { key: "Bard-ally", id: "Bard", name: "Bard" },
-  ];
+  useEffect(() => {
+    async function saveData() {
+      try {
+        const newQuestions = JSON.stringify(questions);
+        await AsyncStorage.setItem("questions", newQuestions);
+      } catch (e) {
+        // error reading value
+      }
+    }
 
-  const enemyChampions: Champion[] = [
-    { key: "Poppy-ally", id: "Poppy", name: "Poppy" },
-    { key: "Nunu-ally", id: "Nunu", name: "Nunu and Willump" },
-    { key: "Galio-ally", id: "Galio", name: "Galio" },
-    { key: "MissFortune-ally", id: "MissFortune", name: "Miss Fortune" },
-    { key: "Swain-ally", id: "Swain", name: "Swain" },
-  ];
+    const unsubscribe = navigation.addListener("beforeRemove", saveData);
+    return unsubscribe;
+  }, [navigation, questions]);
 
   return (
     <StartupStep step={1}>
       <Accordion>
-        <Question
-          id="multiple-1"
-          type="multiple-champions"
-          title="Hello there"
-          isAnswering={false}
-          allyChampions={allyChampions}
-          enemyChampions={enemyChampions}
-          handleChange={console.log}
-        />
+        {questions
+          .filter((q) => q.isActive)
+          .map((q) => (
+            <Question
+              {...q}
+              key={`question-${q.id}`}
+              isAnswering={false}
+              handleChange={handleChange}
+            />
+          ))}
       </Accordion>
+      <Button onPress={debug} title="Debug" />
     </StartupStep>
   );
 };
