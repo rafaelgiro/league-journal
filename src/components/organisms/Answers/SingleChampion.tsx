@@ -18,7 +18,7 @@ export const SingleChampionAnswer = (props: SingleChampionProps) => {
     <ChampionsContainer>
       <Team>
         <Typography variant="title-2" style={{ textAlign: "center" }}>
-          MY TEAM
+          MEU TIME
         </Typography>
         <Portraits>
           {allyChampions.map((champion) => (
@@ -34,7 +34,7 @@ export const SingleChampionAnswer = (props: SingleChampionProps) => {
       </Team>
       <Team>
         <Typography variant="title-2" style={{ textAlign: "center" }}>
-          ENEMY TEAM
+          TIME INIMIGO
         </Typography>
         <Portraits>
           {enemyChampions.map((champion) => (

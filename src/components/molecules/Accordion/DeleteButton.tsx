@@ -9,8 +9,8 @@ export const DeleteButton = (props: DeleteButtonProps) => {
 
   function handlePress() {
     Alert.alert(
-      "Are you sure?",
-      `Please confirm that you want to delete ${title}`,
+      "Você tem certeza?",
+      `Confirme que você deseja deletar o item "${title}"`,
       [
         {
           text: "Cancel",

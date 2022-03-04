@@ -31,6 +31,7 @@ export const AccordionItem = (props: AccordionItemProps) => {
     children,
     isAnswering,
     setTitle,
+    onDelete,
     ...other
   } = props;
   const [isEditing, setIsEditing] = useState(false);
@@ -53,7 +54,10 @@ export const AccordionItem = (props: AccordionItemProps) => {
 
   return (
     <AccordionItemContainer {...other}>
-      <TouchableOpacity onPress={() => !isEditing && handlePress()}>
+      <TouchableOpacity
+        onPress={() => !isEditing && handlePress()}
+        onLongPress={() => setIsEditing(true)}
+      >
         <AccordtionItemHeader>
           {isEditing ? (
             <EditableQuestionInput
@@ -83,7 +87,7 @@ export const AccordionItem = (props: AccordionItemProps) => {
         {!isAnswering && (
           <ActionsContainer>
             <EditButton isEditing={isEditing} setIsEditing={setIsEditing} />
-            <DeleteButton onDelete={console.log} title={title} />
+            <DeleteButton onDelete={onDelete} title={title} />
           </ActionsContainer>
         )}
         <DividerContainer>

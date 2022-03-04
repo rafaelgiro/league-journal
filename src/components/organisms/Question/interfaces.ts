@@ -6,6 +6,7 @@ export interface QuestionProps extends Question, ViewProps {
   enemyChampions?: Champion[];
   handleChange: (id: number, newAnswer: any) => void;
   initialValue?: any;
+  onDelete?: (id: number) => void;
 }
 
 export interface QuestionAnswerProps {

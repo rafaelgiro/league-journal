@@ -44,7 +44,7 @@ export const MultipleChampionsAnswer = (props: MultipleChampionsProps) => {
     <ChampionsContainer>
       <Team>
         <Typography variant="title-2" style={{ textAlign: "center" }}>
-          MY TEAM
+          MEU TIME
         </Typography>
         <Portraits>
           {allyChampions.map((champion) => (
@@ -60,7 +60,7 @@ export const MultipleChampionsAnswer = (props: MultipleChampionsProps) => {
       </Team>
       <Team>
         <Typography variant="title-2" style={{ textAlign: "center" }}>
-          ENEMY TEAM
+          TIME INIMIGO
         </Typography>
         <Portraits>
           {enemyChampions.map((champion) => (

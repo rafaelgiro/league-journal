@@ -9,6 +9,8 @@ export const YesNoButton = (props: YesNoButtonProps) => {
   const { handlePress, type, isChecked, ...other } = props;
   const theme = useTheme();
 
+  const labels = { yes: "Sim", no: "Não" };
+
   return (
     <YesNoButtonContainer {...other} onPress={() => handlePress(type)}>
       <Svg
@@ -38,7 +40,7 @@ export const YesNoButton = (props: YesNoButtonProps) => {
           color: isChecked ? theme.colors.background : theme.colors.text,
         }}
       >
-        {type.toUpperCase()}
+        {labels[type].toUpperCase()}
       </Typography>
     </YesNoButtonContainer>
   );

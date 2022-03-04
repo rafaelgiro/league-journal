@@ -1,9 +1,10 @@
-import { Children, cloneElement, useState } from "react";
-import { View, ViewProps } from "react-native";
+import { Children, cloneElement, useEffect, useState } from "react";
+import { View } from "react-native";
+import { AccordionProps } from "./interfaces";
 
-export const Accordion = (props: ViewProps) => {
-  const { children, ...other } = props;
-  const [currentOpen, setCurrentOpen] = useState(0);
+export const Accordion = (props: AccordionProps) => {
+  const { children, expandedItem, ...other } = props;
+  const [currentOpen, setCurrentOpen] = useState(expandedItem || 0);
 
   function renderChildrenWithProps() {
     return Children.map(children, (child, index) => {
@@ -15,6 +16,10 @@ export const Accordion = (props: ViewProps) => {
       });
     });
   }
+
+  useEffect(() => {
+    if (expandedItem !== undefined) setCurrentOpen(expandedItem);
+  }, [expandedItem]);
 
   return (
     <View {...props} {...other}>

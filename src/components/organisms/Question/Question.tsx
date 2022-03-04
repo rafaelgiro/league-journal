@@ -24,6 +24,7 @@ export const Question = (props: QuestionProps) => {
     isPostGame: initialPostgame,
     isPreGame: initialPregame,
     handleChange: onChange,
+    onDelete,
     ...other
   } = props;
   const [isPreGame, setIsPreGame] = useState(initialPregame);
@@ -37,8 +38,6 @@ export const Question = (props: QuestionProps) => {
   }
 
   useEffect(() => {
-    console.log("answer", answer);
-
     if (onChange)
       onChange(id, {
         id,
@@ -62,26 +61,27 @@ export const Question = (props: QuestionProps) => {
       title={title}
       setTitle={setTitle}
       isAnswering={isAnswering}
+      onDelete={() => onDelete && onDelete(id)}
       {...other}
     >
       {!isAnswering && (
         <>
           <TimingContainer>
-            <Typography variant="body-1">• Ask me on:</Typography>
+            <Typography variant="body-1">• Me pergunte no:</Typography>
             <Checkbox
               handlePress={setIsPreGame}
               isChecked={isPreGame}
-              label="PRE-GAME"
+              label="PRÉ-JOGO"
               style={{ marginHorizontal: 8, opacity: isPreGame ? 1 : 0.4 }}
             />
             <Checkbox
               handlePress={setIsPostGame}
               isChecked={isPostGame}
-              label="POST-GAME"
+              label="PÓS-JOGO"
               style={{ opacity: isPostGame ? 1 : 0.4 }}
             />
           </TimingContainer>
-          <Typography variant="body-1">• Type of answer</Typography>
+          <Typography variant="body-1">• Tipo da Resposta</Typography>
           <CategoriesContainer>
             {categories.map((c) => (
               <RadioButton

@@ -1,5 +1,8 @@
 import { TouchableOpacityProps, ViewProps } from "react-native";
-import { TextFieldProps } from "../../atoms/TextField/interfaces";
+
+export interface AccordionProps extends ViewProps {
+  expandedItem?: number;
+}
 
 export interface AccordionItemProps extends ViewProps {
   title: string;
@@ -7,6 +10,7 @@ export interface AccordionItemProps extends ViewProps {
   isOpen?: boolean;
   handlePress?: () => void;
   isAnswering?: boolean;
+  onDelete: () => void;
 }
 
 export interface EditButtonProps extends TouchableOpacityProps {

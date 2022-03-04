@@ -14,7 +14,7 @@ export const Portraits = styled.View`
 
 export const Team = styled.View`
   width: 100%;
-  margin-bottom: 24px;
+  margin-bottom: 12px;
 `;
 
 export const LaneContainer = styled.View`
