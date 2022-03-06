@@ -22,6 +22,7 @@ import {
   ActionsContainer,
   EditableQuestionInput,
 } from "./styles";
+import { suggestions } from "./helpers";
 
 export const AccordionItem = (props: AccordionItemProps) => {
   const {
@@ -32,10 +33,12 @@ export const AccordionItem = (props: AccordionItemProps) => {
     isAnswering,
     setTitle,
     onDelete,
+    type,
     ...other
   } = props;
   const [isEditing, setIsEditing] = useState(false);
   const [newTitle, setNewTitle] = useState(title);
+  const [placeholder, setPlaceholder] = useState("");
   const titleRef = useRef<TextInput>(null);
   const theme = useTheme();
 
@@ -47,8 +50,19 @@ export const AccordionItem = (props: AccordionItemProps) => {
 
   useEffect(() => {
     if (isEditing) titleRef.current?.focus();
-    else setTitle(newTitle);
+    else if (newTitle === "") {
+      setTitle(placeholder);
+      setNewTitle(placeholder);
+    } else setTitle(newTitle);
   }, [isEditing]);
+
+  useEffect(() => {
+    if (newTitle === "")
+      setPlaceholder(
+        suggestions[type][Math.floor(Math.random() * suggestions[type].length)]
+      );
+    else setPlaceholder("");
+  }, [newTitle]);
 
   if (!handlePress) return null;
 
@@ -66,6 +80,7 @@ export const AccordionItem = (props: AccordionItemProps) => {
               ref={titleRef}
               multiline
               onKeyPress={handleNewTitleChange}
+              placeholder={placeholder}
             />
           ) : (
             <Typography variant="title-2">{title}</Typography>

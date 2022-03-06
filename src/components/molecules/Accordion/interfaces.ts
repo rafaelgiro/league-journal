@@ -7,6 +7,7 @@ export interface AccordionProps extends ViewProps {
 export interface AccordionItemProps extends ViewProps {
   title: string;
   setTitle: (title: string) => void;
+  type: "question" | "reminder";
   isOpen?: boolean;
   handlePress?: () => void;
   isAnswering?: boolean;

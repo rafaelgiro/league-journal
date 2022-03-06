@@ -32,6 +32,7 @@ export const Question = (props: QuestionProps) => {
   const [category, setCategory] = useState<Question["type"]>(type);
   const [answer, setAnswer] = useState<any>(initialValue);
   const [title, setTitle] = useState(initialTitle);
+  const [placeholder, setPlaceholder] = useState("");
 
   function handleChange(id: number, ans: any) {
     setAnswer(ans);
@@ -61,6 +62,7 @@ export const Question = (props: QuestionProps) => {
       title={title}
       setTitle={setTitle}
       isAnswering={isAnswering}
+      type="question"
       onDelete={() => onDelete && onDelete(id)}
       {...other}
     >
