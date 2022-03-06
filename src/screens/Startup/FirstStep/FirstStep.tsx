@@ -5,6 +5,7 @@ import { ServerButton } from "../../../components/atoms/ServerButton";
 import { TextField } from "../../../components/atoms/TextField";
 import { Typography } from "../../../components/atoms/Typography";
 import { StartupStep } from "../../../components/templates/StartupStep";
+import { Wrapper } from "../../../components/templates/Wrapper";
 import { SummonerContext } from "../../../context/Summoner/SummonerContext";
 
 import { servers } from "./helpers";
@@ -14,41 +15,49 @@ export const StartupFirstStep = () => {
     useContext(SummonerContext);
 
   return (
-    <StartupStep step={0}>
-      <View style={{ justifyContent: "space-between", height: "90%" }}>
-        <TextField
-          onChangeText={setSummonerName}
-          value={summonerName}
-          label="Nome de invocador"
-          placeholder="Digite aqui"
-        />
+    <Wrapper>
+      <StartupStep step={0}>
         <View
           style={{
-            flexDirection: "row",
             justifyContent: "space-between",
-            flexWrap: "wrap",
-            marginTop: 32,
+            flex: 1,
+            marginTop: "10%",
           }}
         >
-          {servers.map((s) => (
-            <ServerButton
-              key={s}
-              onPress={() => setServer(s)}
-              isSelected={s === server}
-            >
-              {s}
-            </ServerButton>
-          ))}
+          <TextField
+            onChangeText={setSummonerName}
+            value={summonerName}
+            label="Nome de invocador"
+            placeholder="Digite aqui"
+          />
+          <View
+            style={{
+              flexDirection: "row",
+              justifyContent: "space-between",
+              flexWrap: "wrap",
+              marginTop: 32,
+            }}
+          >
+            {servers.map((s) => (
+              <ServerButton
+                key={s}
+                onPress={() => setServer(s)}
+                isSelected={s === server}
+              >
+                {s}
+              </ServerButton>
+            ))}
+          </View>
+          <View style={{ marginTop: 24, marginBottom: 62 }}>
+            <Typography variant="title-1" style={{ opacity: 0.4 }}>
+              Comece com seu
+            </Typography>
+            <Typography variant="title-1">
+              Servidor e Nome de Invocador
+            </Typography>
+          </View>
         </View>
-        <View style={{ marginTop: 24, marginBottom: 62 }}>
-          <Typography variant="title-1" style={{ opacity: 0.4 }}>
-            Comece com seu
-          </Typography>
-          <Typography variant="title-1">
-            Servidor e Nome de Invocador
-          </Typography>
-        </View>
-      </View>
-    </StartupStep>
+      </StartupStep>
+    </Wrapper>
   );
 };

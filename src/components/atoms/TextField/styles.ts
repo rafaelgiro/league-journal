@@ -9,5 +9,5 @@ export const StyledTextField = styled.TextInput`
 `;
 
 export const TextFieldContainer = styled.View`
-  margin-bottom: -48%;
+  margin-bottom: -104px;
 `;

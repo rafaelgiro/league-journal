@@ -41,18 +41,17 @@ export default function App() {
     <ThemeProvider theme={theme}>
       <SummonerProvider>
         <StatusBar style={isDark ? "light" : "dark"} />
-        <Wrapper>
-          <NavigationContainer>
-            <Stack.Navigator screenOptions={{ headerShown: false }}>
-              <Stack.Screen name="FirstStep" component={StartupFirstStep} />
-              <Stack.Screen
-                name="SecondStep"
-                component={StartupSecondStep}
-                options={{ animation: "fade" }}
-              />
-            </Stack.Navigator>
-          </NavigationContainer>
-        </Wrapper>
+
+        <NavigationContainer>
+          <Stack.Navigator screenOptions={{ headerShown: false }}>
+            <Stack.Screen name="FirstStep" component={StartupFirstStep} />
+            <Stack.Screen
+              name="SecondStep"
+              component={StartupSecondStep}
+              options={{ animation: "fade" }}
+            />
+          </Stack.Navigator>
+        </NavigationContainer>
       </SummonerProvider>
     </ThemeProvider>
   );

@@ -6,7 +6,7 @@ import { NextStepButton } from "./NextStepButton";
 
 import { StartupStepProps } from "./interfaces";
 import { StepNavigation } from "./styles";
-import { ColoredContainer } from "../Wrapper/styles";
+import { ScrollView } from "react-native";
 
 export const StartupStep = (props: StartupStepProps) => {
   const { children, step } = props;
@@ -19,7 +19,7 @@ export const StartupStep = (props: StartupStepProps) => {
   }
 
   return (
-    <ColoredContainer>
+    <>
       {children}
       <StepNavigation>
         <Indicator active={step === 0} />
@@ -27,6 +27,6 @@ export const StartupStep = (props: StartupStepProps) => {
         <Indicator active={step === 2} />
         <NextStepButton handleNavigation={handleNavigation} />
       </StepNavigation>
-    </ColoredContainer>
+    </>
   );
 };

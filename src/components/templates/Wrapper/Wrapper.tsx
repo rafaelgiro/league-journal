@@ -1,5 +1,12 @@
 import { FC } from "react";
-import { SafeAreaView, StyleSheet, Platform, StatusBar } from "react-native";
+import {
+  SafeAreaView,
+  StyleSheet,
+  Platform,
+  StatusBar,
+  ScrollView,
+} from "react-native";
+import { Typography } from "../../atoms/Typography";
 import { Header } from "../../organisms/Header";
 import { MainContainer } from "./styles";
 
@@ -8,7 +15,14 @@ export const Wrapper: FC = (props) => {
   return (
     <MainContainer style={styles.safe} {...other}>
       <Header />
-      <SafeAreaView style={{ flex: 1 }}>{children}</SafeAreaView>
+      <ScrollView
+        style={{ flex: 1, paddingHorizontal: 16 }}
+        contentContainerStyle={{ flexGrow: 1 }}
+      >
+        <SafeAreaView style={{ flex: 1, height: "100%" }}>
+          {children}
+        </SafeAreaView>
+      </ScrollView>
     </MainContainer>
   );
 };

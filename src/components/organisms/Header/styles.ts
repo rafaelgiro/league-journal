@@ -3,7 +3,7 @@ import styled from "@emotion/native";
 export const DefaultHeader = styled.View`
   flex-direction: row;
   justify-content: space-between;
-  margin-top: 8px;
+  padding: 16px;
 `;
 
 export const ChangeThemeButton = styled.TouchableOpacity`
