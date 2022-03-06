@@ -79,3 +79,11 @@ interface Question {
   isPreGame: boolean;
   isPostGame: boolean;
 }
+
+interface Reminder {
+  id: number;
+  isActive: boolean;
+  title: string;
+  isPreGame: boolean;
+  isPostGame: boolean;
+}

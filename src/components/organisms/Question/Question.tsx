@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { View } from "react-native";
 
 import { Checkbox } from "../../atoms/Checkbox";
 import { RadioButton } from "../../atoms/RadioButton";
@@ -32,7 +31,6 @@ export const Question = (props: QuestionProps) => {
   const [category, setCategory] = useState<Question["type"]>(type);
   const [answer, setAnswer] = useState<any>(initialValue);
   const [title, setTitle] = useState(initialTitle);
-  const [placeholder, setPlaceholder] = useState("");
 
   function handleChange(id: number, ans: any) {
     setAnswer(ans);
@@ -52,10 +50,6 @@ export const Question = (props: QuestionProps) => {
         allyChampions,
       });
   }, [isPreGame, isPostGame, answer, title]);
-
-  useEffect(() => {
-    setAnswer(defaultAnswers[category]);
-  }, [category]);
 
   return (
     <AccordionItem
@@ -83,7 +77,7 @@ export const Question = (props: QuestionProps) => {
               style={{ opacity: isPostGame ? 1 : 0.4 }}
             />
           </TimingContainer>
-          <Typography variant="body-1">• Tipo da Resposta</Typography>
+          {/* <Typography variant="body-1">• Tipo da Resposta</Typography> */}
           <CategoriesContainer>
             {categories.map((c) => (
               <RadioButton
@@ -101,6 +95,7 @@ export const Question = (props: QuestionProps) => {
       <QuestionAnswer
         id={id}
         type={category}
+        isAnswering={isAnswering}
         allyChampions={allyChampions}
         enemyChampions={enemyChampions}
         handleChange={handleChange}

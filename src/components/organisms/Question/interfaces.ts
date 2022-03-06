@@ -16,4 +16,5 @@ export interface QuestionAnswerProps {
   enemyChampions?: Champion[];
   handleChange: QuestionProps["handleChange"];
   initialValue: QuestionProps["initialValue"];
+  isAnswering: QuestionProps["isAnswering"];
 }

@@ -4,6 +4,7 @@ export const TimingContainer = styled.View`
   flex-direction: row;
   align-items: center;
   margin-bottom: 8px;
+  display: none;
 `;
 
 export const CategoriesContainer = styled.View`

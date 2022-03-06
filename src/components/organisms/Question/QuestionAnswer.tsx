@@ -8,6 +8,7 @@ import {
   Text,
   YesOrNo,
 } from "../Answers";
+import { defaultAnswers } from "../Answers/helpers";
 
 import { QuestionAnswerProps } from "./interfaces";
 
@@ -19,6 +20,7 @@ export const QuestionAnswer = (props: QuestionAnswerProps) => {
     enemyChampions,
     handleChange,
     initialValue,
+    isAnswering,
   } = props;
 
   switch (type) {
@@ -30,7 +32,7 @@ export const QuestionAnswer = (props: QuestionAnswerProps) => {
           allyChampions={allyChampions}
           enemyChampions={enemyChampions}
           handleChange={(val) => handleChange(id, val)}
-          initialValue={initialValue}
+          initialValue={isAnswering ? initialValue : defaultAnswers[type]}
         />
       );
 
@@ -42,7 +44,7 @@ export const QuestionAnswer = (props: QuestionAnswerProps) => {
           allyChampions={allyChampions}
           enemyChampions={enemyChampions}
           handleChange={(val) => handleChange(id, val)}
-          initialValue={initialValue}
+          initialValue={isAnswering ? initialValue : defaultAnswers[type]}
         />
       );
 
@@ -50,7 +52,7 @@ export const QuestionAnswer = (props: QuestionAnswerProps) => {
       return (
         <LaneAnswer
           handleChange={(val) => handleChange(id, val)}
-          initialValue={initialValue}
+          initialValue={isAnswering ? initialValue : defaultAnswers[type]}
         />
       );
 
@@ -58,7 +60,7 @@ export const QuestionAnswer = (props: QuestionAnswerProps) => {
       return (
         <YesOrNo
           handleChange={(val) => handleChange(id, val)}
-          initialValue={initialValue}
+          initialValue={isAnswering ? initialValue : defaultAnswers[type]}
         />
       );
 
@@ -66,7 +68,7 @@ export const QuestionAnswer = (props: QuestionAnswerProps) => {
       return (
         <Text
           handleChange={(val) => handleChange(id, val)}
-          initialValue={initialValue}
+          initialValue={isAnswering ? initialValue : defaultAnswers[type]}
         />
       );
 
