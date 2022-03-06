@@ -1,6 +1,7 @@
 type RootStackParamList = {
   FirstStep: undefined;
   SecondStep: undefined;
+  ThirdStep: undefined;
 };
 
 type SummonerId = string;

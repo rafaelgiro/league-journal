@@ -14,9 +14,15 @@ export const StartupStep = (props: StartupStepProps) => {
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
   function handleNavigation() {
-    const screens = ["FirstStep", "SecondStep"] as (keyof RootStackParamList)[];
+    const screens = [
+      "FirstStep",
+      "SecondStep",
+      "ThirdStep",
+    ] as (keyof RootStackParamList)[];
     navigation.navigate(screens[step + 1]);
   }
+
+  console.log(step);
 
   return (
     <>

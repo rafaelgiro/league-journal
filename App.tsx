@@ -4,10 +4,10 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { StatusBar } from "expo-status-bar";
 
+import { SummonerProvider } from "./src/context/Summoner/SummonerContext";
 import { StartupFirstStep } from "./src/screens/Startup/FirstStep";
 import { StartupSecondStep } from "./src/screens/Startup/SecondStep";
-import { SummonerProvider } from "./src/context/Summoner/SummonerContext";
-import { Wrapper } from "./src/components/templates/Wrapper";
+import { StartupThirdStep } from "./src/screens/Startup/ThirdStep";
 
 const lightTheme = {
   themeName: "light",
@@ -48,6 +48,11 @@ export default function App() {
             <Stack.Screen
               name="SecondStep"
               component={StartupSecondStep}
+              options={{ animation: "fade" }}
+            />
+            <Stack.Screen
+              name="ThirdStep"
+              component={StartupThirdStep}
               options={{ animation: "fade" }}
             />
           </Stack.Navigator>
