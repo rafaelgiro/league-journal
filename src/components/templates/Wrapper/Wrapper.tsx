@@ -6,14 +6,17 @@ import {
   StatusBar,
   ScrollView,
 } from "react-native";
-import { Typography } from "../../atoms/Typography";
+
 import { Header } from "../../organisms/Header";
+import { LoadingOverlay } from "../LoadingOverlay/LoadingOverlay";
+
 import { MainContainer } from "./styles";
 
 export const Wrapper: FC = (props) => {
   const { children, ...other } = props;
   return (
     <MainContainer style={styles.safe} {...other}>
+      <LoadingOverlay />
       <Header />
       <ScrollView
         style={{ flex: 1, paddingHorizontal: 16 }}

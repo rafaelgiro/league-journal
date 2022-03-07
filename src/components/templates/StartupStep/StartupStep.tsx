@@ -22,8 +22,6 @@ export const StartupStep = (props: StartupStepProps) => {
     navigation.navigate(screens[step + 1]);
   }
 
-  console.log(step);
-
   return (
     <>
       {children}
