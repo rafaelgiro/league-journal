@@ -27,25 +27,31 @@ export const StartupStep = (props: StartupStepProps) => {
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
   async function handleNavigation() {
-    if (step === 0) {
-      setIsLoading({ open: true, text: "Validando nome e região..." });
-      try {
-        const res = await getAccountData(summonerName, server);
-        const data = await res.json();
-        console.log(data);
-      } catch (error) {
-        console.log("deu ruiiiimmmm", error);
-      } finally {
-        setIsLoading({ open: false, text: "" });
-      }
-    }
-
     const screens = [
       "FirstStep",
       "SecondStep",
       "ThirdStep",
     ] as (keyof RootStackParamList)[];
-    navigation.navigate(screens[step + 1]);
+
+    if (step === 0) {
+      setIsLoading({ open: true, text: "Validando nome e região..." });
+
+      try {
+        const res = await getAccountData(summonerName, server);
+        const data = await res.json();
+        console.log(data);
+        if (data.status.status_code === 404 || summonerName === "") {
+          console.log("caiu aqui?");
+          setHasError(true);
+        } else {
+          setHasError(false);
+          console.log("caiu aqui");
+          navigation.navigate(screens[step + 1]);
+        }
+      } catch (error) {
+        // lida com chamad ade api falha
+      }
+    }
   }
 
   function renderChildrenWithProps() {
