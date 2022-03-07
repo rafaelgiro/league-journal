@@ -21,6 +21,7 @@ export const ServerSelection = (props: ServerSelectionProps) => {
         value={summonerName}
         label="Nome de invocador"
         placeholder="Digite aqui"
+        hasError
       />
       <Servers>
         {servers.map((s) => (

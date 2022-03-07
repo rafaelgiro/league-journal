@@ -12,7 +12,7 @@ import { StyledTextField, TextFieldContainer } from "./styles";
 import { TextFieldProps } from "./interfaces";
 
 export const TextField = (props: TextFieldProps) => {
-  const { label, style, ...other } = props;
+  const { label, style, hasError, ...other } = props;
   const { colors } = useTheme();
   const [hasFocus, setHasFocus] = useState(false);
   const [fontLoaded] = useFonts({
@@ -23,7 +23,9 @@ export const TextField = (props: TextFieldProps) => {
 
   return (
     <TextFieldContainer style={style}>
-      <Typography variant="label">{label}</Typography>
+      <Typography variant="label" hasError={hasError}>
+        {label}
+      </Typography>
       <StyledTextField
         {...other}
         placeholderTextColor={colors.secondary}
@@ -34,7 +36,7 @@ export const TextField = (props: TextFieldProps) => {
       <Svg width="100%" height="16%" viewBox="0 0 310 5" fill="none">
         <Path
           d="M1 1.58004C51.7847 1.74391 256.478 0.660954 307.778 1.10981M3.07688 3.10472C54.1088 3.65332 257.933 4.11643 309 3.97394L3.07688 3.10472Z"
-          stroke={colors.text}
+          stroke={hasError ? colors.error : colors.text}
           strokeOpacity={hasFocus ? 1 : 0.7}
           strokeLinecap="round"
         />
