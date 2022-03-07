@@ -8,6 +8,7 @@ import { SummonerProvider } from "./src/context/Summoner/SummonerContext";
 import { StartupFirstStep } from "./src/screens/Startup/FirstStep";
 import { StartupSecondStep } from "./src/screens/Startup/SecondStep";
 import { StartupThirdStep } from "./src/screens/Startup/ThirdStep";
+import { UIProvider } from "./src/context/UI/UIContext";
 
 const lightTheme = {
   themeName: "light",
@@ -39,25 +40,27 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <SummonerProvider>
-        <StatusBar style={isDark ? "light" : "dark"} />
+      <UIProvider>
+        <SummonerProvider>
+          <StatusBar style={isDark ? "light" : "dark"} />
 
-        <NavigationContainer>
-          <Stack.Navigator screenOptions={{ headerShown: false }}>
-            <Stack.Screen name="FirstStep" component={StartupFirstStep} />
-            <Stack.Screen
-              name="SecondStep"
-              component={StartupSecondStep}
-              options={{ animation: "fade" }}
-            />
-            <Stack.Screen
-              name="ThirdStep"
-              component={StartupThirdStep}
-              options={{ animation: "fade" }}
-            />
-          </Stack.Navigator>
-        </NavigationContainer>
-      </SummonerProvider>
+          <NavigationContainer>
+            <Stack.Navigator screenOptions={{ headerShown: false }}>
+              <Stack.Screen name="FirstStep" component={StartupFirstStep} />
+              <Stack.Screen
+                name="SecondStep"
+                component={StartupSecondStep}
+                options={{ animation: "fade" }}
+              />
+              <Stack.Screen
+                name="ThirdStep"
+                component={StartupThirdStep}
+                options={{ animation: "fade" }}
+              />
+            </Stack.Navigator>
+          </NavigationContainer>
+        </SummonerProvider>
+      </UIProvider>
     </ThemeProvider>
   );
 }

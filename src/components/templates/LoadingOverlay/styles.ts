@@ -1,12 +1,12 @@
 import styled from "@emotion/native";
 
-export const LoadingContainer = styled.View<{ isOpen: boolean }>`
+export const LoadingContainer = styled.View`
   position: absolute;
-  flex: 1;
-  height: 110%;
   width: 100%;
-  background-color: red;
-  z-index: 100;
-  justify-content: center;
+  height: 100%;
+  z-index: 10;
+  flex-direction: row;
   align-items: center;
+  justify-content: center;
+  background-color: ${({ theme }) => theme.colors.background};
 `;

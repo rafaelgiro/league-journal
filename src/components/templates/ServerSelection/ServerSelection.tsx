@@ -10,7 +10,7 @@ import { ServerSelectionProps } from "./interfaces";
 import { Servers, ServerScreenTitle, ServerSelectionContainer } from "./styles";
 
 export const ServerSelection = (props: ServerSelectionProps) => {
-  const { title } = props;
+  const { title, hasError } = props;
   const { server, setServer, summonerName, setSummonerName } =
     useContext(SummonerContext);
 
@@ -21,16 +21,16 @@ export const ServerSelection = (props: ServerSelectionProps) => {
         value={summonerName}
         label="Nome de invocador"
         placeholder="Digite aqui"
-        hasError
+        hasError={hasError}
       />
       <Servers>
         {servers.map((s) => (
           <ServerButton
-            key={s}
-            onPress={() => setServer(s)}
-            isSelected={s === server}
+            key={s.riot}
+            onPress={() => setServer(s.riot)}
+            isSelected={s.riot === server}
           >
-            {s}
+            {s.label}
           </ServerButton>
         ))}
       </Servers>

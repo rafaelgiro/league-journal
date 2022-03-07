@@ -6,14 +6,40 @@ import { NextStepButton } from "./NextStepButton";
 
 import { StartupStepProps } from "./interfaces";
 import { StepNavigation } from "./styles";
-import { ScrollView } from "react-native";
+import {
+  Children,
+  cloneElement,
+  isValidElement,
+  useContext,
+  useState,
+} from "react";
+
+import { getAccountData } from "../../../utils/getAccountData";
+import { SummonerContext } from "../../../context/Summoner/SummonerContext";
+import { UIContext } from "../../../context/UI/UIContext";
 
 export const StartupStep = (props: StartupStepProps) => {
   const { children, step } = props;
+  const [hasError, setHasError] = useState(false);
+  const { setIsLoading } = useContext(UIContext);
+  const { server, summonerName } = useContext(SummonerContext);
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
-  function handleNavigation() {
+  async function handleNavigation() {
+    if (step === 0) {
+      setIsLoading({ open: true, text: "Validando nome e região..." });
+      try {
+        const res = await getAccountData(summonerName, server);
+        const data = await res.json();
+        console.log(data);
+      } catch (error) {
+        console.log("deu ruiiiimmmm", error);
+      } finally {
+        setIsLoading({ open: false, text: "" });
+      }
+    }
+
     const screens = [
       "FirstStep",
       "SecondStep",
@@ -22,9 +48,17 @@ export const StartupStep = (props: StartupStepProps) => {
     navigation.navigate(screens[step + 1]);
   }
 
+  function renderChildrenWithProps() {
+    return Children.map(children, (child) => {
+      if (isValidElement(child)) {
+        return cloneElement(child, { hasError });
+      }
+    });
+  }
+
   return (
     <>
-      {children}
+      {renderChildrenWithProps()}
       <StepNavigation>
         <Indicator active={step === 0} />
         <Indicator active={step === 1} />

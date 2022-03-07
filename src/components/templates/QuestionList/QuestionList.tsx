@@ -12,7 +12,7 @@ import { QuestionListProps } from "./interfaces";
 import { AddMoreContainer } from "./styles";
 
 export const QuestionList = (props: QuestionListProps) => {
-  const { isAnswering } = props;
+  const { isAnswering, hasError } = props;
   const [questions, setQuestions] = useState<Question[]>([]);
   const [expandedQuestion, setExpandedQuestion] = useState(0);
   const navigation =
