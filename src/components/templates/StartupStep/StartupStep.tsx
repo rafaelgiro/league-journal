@@ -40,16 +40,16 @@ export const StartupStep = (props: StartupStepProps) => {
         const res = await getAccountData(summonerName, server);
         const data = await res.json();
         console.log(data);
-        if (data.status.status_code === 404 || summonerName === "") {
-          console.log("caiu aqui?");
+        if (data.status?.status_code === 404 || summonerName === "")
           setHasError(true);
-        } else {
+        else {
           setHasError(false);
-          console.log("caiu aqui");
+          setIsLoading({ open: false, text: "" });
           navigation.navigate(screens[step + 1]);
         }
       } catch (error) {
         // lida com chamad ade api falha
+        setIsLoading({ open: false, text: "" });
       }
     }
   }
