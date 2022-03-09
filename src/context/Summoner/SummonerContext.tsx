@@ -36,16 +36,26 @@ export const SummonerProvider: FC = (props) => {
       }
     }
 
+    if (server && summonerName) saveSummoner();
+  }, [server, summonerName]);
+
+  useEffect(() => {
     async function loadSummoner() {
       try {
         const value = await AsyncStorage.getItem("summoner");
+
+        if (value) {
+          const localSummoner = JSON.parse(value);
+          setServer(localSummoner.server);
+          setSummonerName(localSummoner.summonerName);
+        }
       } catch (e) {
         // error reading value
       }
     }
 
-    if (server && summonerName) saveSummoner();
-  }, [server, summonerName]);
+    loadSummoner();
+  }, []);
 
   return (
     <SummonerContext.Provider
