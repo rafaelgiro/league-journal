@@ -31,6 +31,7 @@ export const StartupStep = (props: StartupStepProps) => {
       "FirstStep",
       "SecondStep",
       "ThirdStep",
+      "Homescreen",
     ] as (keyof RootStackParamList)[];
 
     if (step === 0) {
@@ -51,6 +52,8 @@ export const StartupStep = (props: StartupStepProps) => {
         // lida com chamad ade api falha
         setIsLoading({ open: false, text: "" });
       }
+    } else {
+      navigation.navigate(screens[step + 1]);
     }
   }
 
