@@ -14,3 +14,8 @@ export const ChangeThemeButton = styled.TouchableOpacity`
   flex-direction: row;
   align-items: center;
 `;
+
+export const CurrentServer = styled.View`
+  flex-direction: row;
+  align-items: center;
+`;

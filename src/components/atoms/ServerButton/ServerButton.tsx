@@ -7,12 +7,13 @@ import { ButtonProps } from "./interface";
 import { StyledSvgContainer } from "./styles";
 
 export const ServerButton = (props: ButtonProps) => {
-  const { children, isSelected, ...other } = props;
+  const { children, isSelected, style, ...other } = props;
   const { colors } = useTheme();
 
   return (
     <TouchableOpacity
-      style={{ width: 66, height: 42, marginTop: 32 }}
+      // @ts-ignore
+      style={{ width: 66, height: 42, ...style }}
       {...other}
     >
       <StyledSvgContainer style={{ right: isSelected ? -4 : 0 }}>

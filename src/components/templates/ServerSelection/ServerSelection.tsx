@@ -29,6 +29,7 @@ export const ServerSelection = (props: ServerSelectionProps) => {
             key={s.riot}
             onPress={() => setServer(s.riot)}
             isSelected={s.riot === server}
+            style={{ marginTop: 32 }}
           >
             {s.label}
           </ServerButton>
