@@ -4,7 +4,7 @@ import { Wrapper } from "../../../components/templates/Wrapper";
 
 export const StartupFirstStep = () => {
   return (
-    <Wrapper>
+    <Wrapper isIntro>
       <StartupStep step={0}>
         <ServerSelection title="Comece com seu" />
       </StartupStep>

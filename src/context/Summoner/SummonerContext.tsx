@@ -54,9 +54,7 @@ export const SummonerProvider: FC = (props) => {
       }
     }
 
-    // loadSummoner();
-
-    AsyncStorage.clear();
+    loadSummoner();
   }, []);
 
   return (

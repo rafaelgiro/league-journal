@@ -70,8 +70,6 @@ export default function App() {
     checkSummonerAndSetNavigation();
   }, []);
 
-  console.log(initialRoute);
-
   if (!initialRoute) return null;
 
   return (
