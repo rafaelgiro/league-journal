@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { useTheme } from "@emotion/react";
-import { TouchableOpacity } from "react-native";
+import { TouchableOpacity, View } from "react-native";
 
 import { ThemeIcon } from "./ThemeIcon";
 import { Typography } from "../../atoms/Typography";
@@ -15,8 +15,10 @@ import {
   HeaderContent,
   CurrentServer,
 } from "./styles";
+import { HeaderProps } from "./interfaces";
 
-export const Header = () => {
+export const Header = (props: HeaderProps) => {
+  const { isIntro } = props;
   const { themeName, setIsDark } = useTheme();
   const { server, summonerName } = useContext(SummonerContext);
   const serverLabel = servers.find((s) => s.riot === server)?.label;
@@ -25,11 +27,11 @@ export const Header = () => {
     <DefaultHeader>
       <LoadingOverlay />
       <HeaderContent>
-        {serverLabel && summonerName && (
+        {!isIntro && serverLabel && summonerName && summonerName !== "" ? (
           <TouchableOpacity>
             <CurrentServer>
               <ServerButton
-                style={{ transform: [{ scale: 0.75 }], marginHorizontal: -4 }}
+                style={{ transform: [{ scale: 0.75 }], marginLeft: -4 }}
                 isSelected={false}
                 onPress={() => {}}
               >
@@ -38,6 +40,8 @@ export const Header = () => {
               <Typography variant="body-1">{summonerName}</Typography>
             </CurrentServer>
           </TouchableOpacity>
+        ) : (
+          <View />
         )}
         <ChangeThemeButton onPress={() => setIsDark((t) => !t)}>
           <Typography variant="eyebrown" style={{ marginRight: 4 }}>

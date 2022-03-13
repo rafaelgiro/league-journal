@@ -9,8 +9,8 @@ import {
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 interface SummonerContextProps {
-  summonerName: string;
-  setSummonerName: Dispatch<SetStateAction<string>>;
+  summonerName?: string;
+  setSummonerName: Dispatch<SetStateAction<string | undefined>>;
   server: Region;
   setServer: Dispatch<SetStateAction<Region>>;
 }
@@ -24,7 +24,7 @@ export const SummonerContext = createContext<SummonerContextProps>({
 
 export const SummonerProvider: FC = (props) => {
   const [server, setServer] = useState<Region>("br1");
-  const [summonerName, setSummonerName] = useState("");
+  const [summonerName, setSummonerName] = useState<string>();
 
   useEffect(() => {
     async function saveSummoner() {
@@ -54,7 +54,9 @@ export const SummonerProvider: FC = (props) => {
       }
     }
 
-    loadSummoner();
+    // loadSummoner();
+
+    AsyncStorage.clear();
   }, []);
 
   return (

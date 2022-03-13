@@ -1,11 +1,14 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ThemeProvider } from "@emotion/react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { StatusBar } from "expo-status-bar";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-import { SummonerProvider } from "./src/context/Summoner/SummonerContext";
+import {
+  SummonerContext,
+  SummonerProvider,
+} from "./src/context/Summoner/SummonerContext";
 import { StartupFirstStep } from "./src/screens/Startup/FirstStep";
 import { StartupSecondStep } from "./src/screens/Startup/SecondStep";
 import { StartupThirdStep } from "./src/screens/Startup/ThirdStep";
@@ -37,6 +40,7 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 export default function App() {
   const [isDark, setIsDark] = useState(false);
   const [initialRoute, setInitialRoute] = useState<string | null>(null);
+  const { setServer, setSummonerName } = useContext(SummonerContext);
 
   const theme = isDark
     ? { ...darkTheme, setIsDark }
@@ -47,9 +51,13 @@ export default function App() {
       try {
         const summoner = await AsyncStorage.getItem("summoner");
 
-        console.log(summoner);
-
         if (summoner !== null) {
+          const summ = JSON.parse(summoner) as {
+            server: Region;
+            summonerName: string;
+          };
+          setServer(summ.server);
+          setSummonerName(summ.summonerName);
           setInitialRoute("Homescreen");
         } else {
           setInitialRoute("FirstStep");

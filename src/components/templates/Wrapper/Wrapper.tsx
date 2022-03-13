@@ -1,4 +1,3 @@
-import { FC } from "react";
 import {
   SafeAreaView,
   StyleSheet,
@@ -8,14 +7,15 @@ import {
 } from "react-native";
 
 import { Header } from "../../organisms/Header";
+import { WrapperProps } from "./interfaces";
 
 import { MainContainer } from "./styles";
 
-export const Wrapper: FC = (props) => {
-  const { children, ...other } = props;
+export const Wrapper = (props: WrapperProps) => {
+  const { children, isIntro, ...other } = props;
   return (
     <MainContainer style={styles.safe} {...other}>
-      <Header />
+      <Header isIntro={isIntro} />
       <ScrollView
         style={{ flex: 1, paddingHorizontal: 16 }}
         contentContainerStyle={{ flexGrow: 1 }}
