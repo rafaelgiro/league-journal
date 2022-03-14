@@ -1,6 +1,7 @@
 import { useTheme } from "@emotion/react";
 import { View } from "react-native";
 import { Typography } from "../../components/atoms/Typography";
+import { MatchHistory } from "../../components/templates/MatchHistory";
 import { Wrapper } from "../../components/templates/Wrapper";
 import { FindGame } from "./styles";
 
@@ -17,6 +18,7 @@ export const Homescreen = () => {
             FIND GAME
           </Typography>
         </FindGame>
+        <MatchHistory />
       </View>
     </Wrapper>
   );
