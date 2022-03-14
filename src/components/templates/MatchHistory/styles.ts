@@ -4,7 +4,7 @@ export const MatchHistoryContainer = styled.View`
   margin-top: 24px;
 `;
 
-export const MatchContainer = styled.View`
+export const MatchContainer = styled.TouchableHighlight`
   margin: 16px 8px;
 `;
 

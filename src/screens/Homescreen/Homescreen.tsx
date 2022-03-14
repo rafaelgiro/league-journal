@@ -15,7 +15,7 @@ export const Homescreen = () => {
             variant="title-2"
             style={{ color: theme.colors.background }}
           >
-            FIND GAME
+            ENCONTRAR PARTIDA
           </Typography>
         </FindGame>
         <MatchHistory />

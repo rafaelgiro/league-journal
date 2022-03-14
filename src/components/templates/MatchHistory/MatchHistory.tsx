@@ -14,7 +14,7 @@ export const MatchHistory = () => {
   return (
     <MatchHistoryContainer>
       <Typography variant="title-2" style={{ textDecorationLine: "underline" }}>
-        RECENT GAMES
+        PARTIDAS RECENTES
       </Typography>
       <ScrollView horizontal>
         {matches.map((m, i) => (
