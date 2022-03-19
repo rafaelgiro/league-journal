@@ -1,3 +1,6 @@
 import styled from "@emotion/native";
 
-export const SummaryContainer = styled.View``;
+export const SummaryTitleContainer = styled.View`
+  flex-direction: row;
+  justify-content: space-between;
+`;

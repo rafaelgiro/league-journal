@@ -1,4 +1,4 @@
 export const summaryTitles = {
-  questions: "PERGUNTAS",
-  reminders: "LEMBRETES",
+  questions: { title: "PERGUNTAS", screen: "Questions" },
+  reminders: { title: "LEMBRETES", screen: "Reminders" },
 };

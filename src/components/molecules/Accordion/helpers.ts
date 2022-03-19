@@ -3,7 +3,7 @@ export const suggestions = {
     "Qual rota devo pressionar?",
     "Devo fazer split push?",
     "Devo jogar agressivo?",
-    "Qual meu principal objetivo esse jogo?",
+    "Qual meu principal objetivo nesse jogo?",
     "O que faço se sair da lane com vantagem?",
     "Tenho vantagem na rota?",
     "Qual campeão pode virar uma bola de neve?",

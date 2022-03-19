@@ -14,6 +14,8 @@ import { StartupSecondStep } from "./src/screens/Startup/SecondStep";
 import { StartupThirdStep } from "./src/screens/Startup/ThirdStep";
 import { UIProvider } from "./src/context/UI/UIContext";
 import { Homescreen } from "./src/screens/Homescreen";
+import { QuestionsScreen } from "./src/screens/Questions";
+import { RemindersScreen } from "./src/screens/Reminders";
 
 const lightTheme = {
   themeName: "light",
@@ -86,6 +88,16 @@ export default function App() {
               <Stack.Screen
                 name="Homescreen"
                 component={Homescreen}
+                options={{ animation: "fade" }}
+              />
+              <Stack.Screen
+                name="Questions"
+                component={QuestionsScreen}
+                options={{ animation: "fade" }}
+              />
+              <Stack.Screen
+                name="Reminders"
+                component={RemindersScreen}
                 options={{ animation: "fade" }}
               />
               <Stack.Screen name="FirstStep" component={StartupFirstStep} />
