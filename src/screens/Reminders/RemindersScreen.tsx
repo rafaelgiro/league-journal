@@ -3,7 +3,7 @@ import { Wrapper } from "../../components/templates/Wrapper";
 
 export const RemindersScreen = () => {
   return (
-    <Wrapper>
+    <Wrapper backButton>
       <ReminderList isAnswering={false} />
     </Wrapper>
   );

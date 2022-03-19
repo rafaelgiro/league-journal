@@ -12,10 +12,10 @@ import { WrapperProps } from "./interfaces";
 import { MainContainer } from "./styles";
 
 export const Wrapper = (props: WrapperProps) => {
-  const { children, isIntro, ...other } = props;
+  const { children, isIntro, backButton, ...other } = props;
   return (
     <MainContainer style={styles.safe} {...other}>
-      <Header isIntro={isIntro} />
+      <Header isIntro={isIntro} backButton={backButton} />
       <ScrollView
         style={{ flex: 1, paddingHorizontal: 16 }}
         contentContainerStyle={{ flexGrow: 1 }}

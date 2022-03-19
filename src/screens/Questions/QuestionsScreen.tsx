@@ -3,7 +3,7 @@ import { Wrapper } from "../../components/templates/Wrapper";
 
 export const QuestionsScreen = () => {
   return (
-    <Wrapper>
+    <Wrapper backButton>
       <QuestionList isAnswering={false} />
     </Wrapper>
   );

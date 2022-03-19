@@ -9,16 +9,11 @@ import { LoadingOverlay } from "../../templates/LoadingOverlay/LoadingOverlay";
 import { SummonerContext } from "../../../context/Summoner/SummonerContext";
 import { servers } from "../../templates/ServerSelection/helpers";
 
-import {
-  ChangeThemeButton,
-  DefaultHeader,
-  HeaderContent,
-  CurrentServer,
-} from "./styles";
+import { HeaderButton, DefaultHeader, HeaderContent } from "./styles";
 import { HeaderProps } from "./interfaces";
+import { HeaderAction } from "./HeaderAction";
 
 export const Header = (props: HeaderProps) => {
-  const { isIntro } = props;
   const { themeName, setIsDark } = useTheme();
   const { server, summonerName } = useContext(SummonerContext);
   const serverLabel = servers.find((s) => s.riot === server)?.label;
@@ -27,28 +22,17 @@ export const Header = (props: HeaderProps) => {
     <DefaultHeader>
       <LoadingOverlay />
       <HeaderContent>
-        {!isIntro && serverLabel && summonerName && summonerName !== "" ? (
-          <TouchableOpacity>
-            <CurrentServer>
-              <ServerButton
-                style={{ transform: [{ scale: 0.75 }], marginLeft: -4 }}
-                isSelected={false}
-                onPress={() => {}}
-              >
-                {serverLabel}
-              </ServerButton>
-              <Typography variant="body-1">{summonerName}</Typography>
-            </CurrentServer>
-          </TouchableOpacity>
-        ) : (
-          <View />
-        )}
-        <ChangeThemeButton onPress={() => setIsDark((t) => !t)}>
+        <HeaderAction
+          summonerName={summonerName}
+          serverLabel={serverLabel}
+          {...props}
+        />
+        <HeaderButton onPress={() => setIsDark((t) => !t)}>
           <Typography variant="eyebrown" style={{ marginRight: 4 }}>
             {themeName === "light" ? "Solari" : "Lunari"}
           </Typography>
           <ThemeIcon themeName={themeName} />
-        </ChangeThemeButton>
+        </HeaderButton>
       </HeaderContent>
     </DefaultHeader>
   );

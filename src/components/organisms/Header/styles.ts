@@ -10,7 +10,7 @@ export const HeaderContent = styled.View`
   padding: 16px;
 `;
 
-export const ChangeThemeButton = styled.TouchableOpacity`
+export const HeaderButton = styled.TouchableOpacity`
   flex-direction: row;
   align-items: center;
 `;
