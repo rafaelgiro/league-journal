@@ -5,6 +5,7 @@ type RootStackParamList = {
   Homescreen: undefined;
   Questions: undefined;
   Reminders: undefined;
+  SummonerConfig: undefined;
 };
 
 type SummonerId = string;

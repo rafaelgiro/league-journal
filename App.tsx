@@ -16,6 +16,7 @@ import { UIProvider } from "./src/context/UI/UIContext";
 import { Homescreen } from "./src/screens/Homescreen";
 import { QuestionsScreen } from "./src/screens/Questions";
 import { RemindersScreen } from "./src/screens/Reminders";
+import { SummonerConfig } from "./src/screens/SummonerConfig";
 
 const lightTheme = {
   themeName: "light",
@@ -98,6 +99,11 @@ export default function App() {
               <Stack.Screen
                 name="Reminders"
                 component={RemindersScreen}
+                options={{ animation: "fade" }}
+              />
+              <Stack.Screen
+                name="SummonerConfig"
+                component={SummonerConfig}
                 options={{ animation: "fade" }}
               />
               <Stack.Screen name="FirstStep" component={StartupFirstStep} />

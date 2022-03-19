@@ -16,28 +16,6 @@ export const HeaderAction = (props: HeaderActionProps) => {
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
-  if (
-    !backButton &&
-    !isIntro &&
-    serverLabel &&
-    summonerName &&
-    summonerName !== ""
-  )
-    return (
-      <TouchableOpacity>
-        <CurrentServer>
-          <ServerButton
-            style={{ transform: [{ scale: 0.75 }], marginLeft: -4 }}
-            isSelected={false}
-            onPress={() => {}}
-          >
-            {serverLabel}
-          </ServerButton>
-          <Typography variant="body-1">{summonerName}</Typography>
-        </CurrentServer>
-      </TouchableOpacity>
-    );
-
   if (backButton)
     return (
       <HeaderButton onPress={navigation.goBack}>
@@ -54,6 +32,22 @@ export const HeaderAction = (props: HeaderActionProps) => {
           VOLTAR
         </Typography>
       </HeaderButton>
+    );
+
+  if (!isIntro && serverLabel && summonerName && summonerName !== "")
+    return (
+      <TouchableOpacity onPress={() => navigation.navigate("SummonerConfig")}>
+        <CurrentServer>
+          <ServerButton
+            style={{ transform: [{ scale: 0.75 }], marginLeft: -4 }}
+            isSelected={false}
+            onPress={() => {}}
+          >
+            {serverLabel}
+          </ServerButton>
+          <Typography variant="body-1">{summonerName}</Typography>
+        </CurrentServer>
+      </TouchableOpacity>
     );
 
   return <View />;
