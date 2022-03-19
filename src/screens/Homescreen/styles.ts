@@ -6,3 +6,8 @@ export const FindGame = styled.TouchableOpacity`
   border-radius: 8px;
   margin: 32px auto;
 `;
+
+export const HomeContainer = styled.View`
+  flex: 1;
+  justify-content: space-between;
+`;

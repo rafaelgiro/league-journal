@@ -34,7 +34,7 @@ export const Summary = (props: SummaryProps) => {
         {summaryTitles[variant]}
       </Typography>
       <View>
-        {items.map((item) => (
+        {items.slice(0, 3).map((item) => (
           <Typography variant="title-3">• {item}</Typography>
         ))}
       </View>
