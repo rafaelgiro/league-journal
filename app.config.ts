@@ -2,6 +2,6 @@ export default {
   name: "League Journal",
   version: "1.0.0",
   extra: {
-    riotAPI: "RGAPI-bdee99f4-1d17-4d05-b1dd-0e2142060769",
+    riotAPI: "RGAPI-c10a2443-7cdb-498b-a28a-18f86ede8d15",
   },
 };
