@@ -14,7 +14,7 @@ import {
   useState,
 } from "react";
 
-import { getAccountData } from "../../../utils/getAccountData";
+import { getAccount } from "../../../utils/getAccount";
 import { SummonerContext } from "../../../context/Summoner/SummonerContext";
 import { UIContext } from "../../../context/UI/UIContext";
 
@@ -42,8 +42,8 @@ export const StartupStep = (props: StartupStepProps) => {
           setHasError(true);
           setIsLoading({ open: false, text: "" });
         } else {
-          const res = await getAccountData(summonerName, server);
-          const data = await res.json();
+          const res = await getAccount(summonerName, server);
+          const data = await res?.json();
           if (data.status?.status_code === 404 || summonerName === "")
             setHasError(true);
           else {
