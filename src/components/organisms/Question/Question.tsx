@@ -9,7 +9,6 @@ import { QuestionAnswer } from "./QuestionAnswer";
 import { categories } from "./helpers";
 import { QuestionProps } from "./interfaces";
 import { CategoriesContainer, TimingContainer } from "./styles";
-import { defaultAnswers } from "../Answers/helpers";
 
 export const Question = (props: QuestionProps) => {
   const {
