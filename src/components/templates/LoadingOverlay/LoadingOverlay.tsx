@@ -1,10 +1,10 @@
-import { useTheme } from "@emotion/react";
-import { useContext } from "react";
-import { ActivityIndicator } from "react-native";
+import { useTheme } from '@emotion/react';
+import { useContext } from 'react';
+import { ActivityIndicator } from 'react-native';
 
-import { UIContext } from "../../../context/UI/UIContext";
-import { Typography } from "../../atoms/Typography";
-import { LoadingContainer } from "./styles";
+import { UIContext } from '../../../context/UI/UIContext';
+import { Typography } from '../../atoms/Typography';
+import { LoadingContainer } from './styles';
 
 export const LoadingOverlay = () => {
   const { isLoading } = useContext(UIContext);

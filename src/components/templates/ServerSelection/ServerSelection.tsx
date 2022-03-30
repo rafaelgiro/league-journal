@@ -1,13 +1,13 @@
-import { useContext } from "react";
+import { useContext } from 'react';
 
-import { TextField } from "../../atoms/TextField";
-import { Typography } from "../../atoms/Typography";
-import { ServerButton } from "../../atoms/ServerButton";
-import { SummonerContext } from "../../../context/Summoner/SummonerContext";
+import { TextField } from '../../atoms/TextField';
+import { Typography } from '../../atoms/Typography';
+import { ServerButton } from '../../atoms/ServerButton';
+import { SummonerContext } from '../../../context/Summoner/SummonerContext';
 
-import { servers } from "./helpers";
-import { ServerSelectionProps } from "./interfaces";
-import { Servers, ServerScreenTitle, ServerSelectionContainer } from "./styles";
+import { servers } from './helpers';
+import { ServerSelectionProps } from './interfaces';
+import { Servers, ServerScreenTitle, ServerSelectionContainer } from './styles';
 
 export const ServerSelection = (props: ServerSelectionProps) => {
   const { title, hasError } = props;

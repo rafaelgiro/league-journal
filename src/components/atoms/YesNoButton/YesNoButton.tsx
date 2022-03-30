@@ -1,15 +1,15 @@
-import Svg, { Path } from "react-native-svg";
-import { useTheme } from "@emotion/react";
+import Svg, { Path } from 'react-native-svg';
+import { useTheme } from '@emotion/react';
 
-import { YesNoButtonProps } from "./interfaces";
-import { YesNoButtonContainer } from "./styles";
-import { Typography } from "../Typography";
+import { YesNoButtonProps } from './interfaces';
+import { YesNoButtonContainer } from './styles';
+import { Typography } from '../Typography';
 
 export const YesNoButton = (props: YesNoButtonProps) => {
   const { handlePress, type, isChecked, ...other } = props;
   const theme = useTheme();
 
-  const labels = { yes: "Sim", no: "Não" };
+  const labels = { yes: 'Sim', no: 'Não' };
 
   return (
     <YesNoButtonContainer {...other} onPress={() => handlePress(type)}>
@@ -18,7 +18,7 @@ export const YesNoButton = (props: YesNoButtonProps) => {
         height="38"
         viewBox="0 0 61 38"
         fill="none"
-        style={{ position: "absolute" }}
+        style={{ position: 'absolute' }}
       >
         <Path
           d="M9.30735 5.99052L55.7711 4.75063L59 8.06147L56.2773 29.6154L54.957 30.1851L52.679 31.8807L5.08649 35.1111L4.73076 28.0739L3.20523 9.91795L3 5.17287L12.2832 4"
@@ -37,7 +37,7 @@ export const YesNoButton = (props: YesNoButtonProps) => {
       <Typography
         variant="title-2"
         style={{
-          color: isChecked ? theme.colors.background : theme.colors.text,
+          color: isChecked ? theme.colors.background : theme.colors.text
         }}
       >
         {labels[type].toUpperCase()}

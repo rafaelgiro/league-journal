@@ -1,7 +1,7 @@
-import { TouchableOpacityProps } from "react-native";
+import { TouchableOpacityProps } from 'react-native';
 
-export interface ButtonProps extends Omit<TouchableOpacityProps, "title"> {
+export interface ButtonProps extends Omit<TouchableOpacityProps, 'title'> {
   children: string;
-  priority?: "primary" | "secondary";
+  priority?: 'primary' | 'secondary';
   isSelected: boolean;
 }

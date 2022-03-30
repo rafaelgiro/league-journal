@@ -1,7 +1,7 @@
-import { useTheme } from "@emotion/react";
-import { TouchableOpacity } from "react-native";
-import { Path, Svg } from "react-native-svg";
-import { NextStepButtonProps } from "./interfaces";
+import { useTheme } from '@emotion/react';
+import { TouchableOpacity } from 'react-native';
+import { Path, Svg } from 'react-native-svg';
+import { NextStepButtonProps } from './interfaces';
 
 export const NextStepButton = (props: NextStepButtonProps) => {
   const { handleNavigation } = props;

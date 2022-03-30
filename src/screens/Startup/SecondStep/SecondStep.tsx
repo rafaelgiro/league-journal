@@ -1,7 +1,7 @@
-import { Typography } from "../../../components/atoms/Typography";
-import { QuestionList } from "../../../components/templates/QuestionList";
-import { StartupStep } from "../../../components/templates/StartupStep";
-import { Wrapper } from "../../../components/templates/Wrapper";
+import { Typography } from '../../../components/atoms/Typography';
+import { QuestionList } from '../../../components/templates/QuestionList';
+import { StartupStep } from '../../../components/templates/StartupStep';
+import { Wrapper } from '../../../components/templates/Wrapper';
 
 export const StartupSecondStep = () => {
   return (

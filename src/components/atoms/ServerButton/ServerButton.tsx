@@ -1,10 +1,10 @@
-import { useTheme } from "@emotion/react";
-import { TouchableOpacity } from "react-native";
-import Svg, { Path, Rect } from "react-native-svg";
-import { Typography } from "../Typography";
+import { useTheme } from '@emotion/react';
+import { TouchableOpacity } from 'react-native';
+import Svg, { Path, Rect } from 'react-native-svg';
+import { Typography } from '../Typography';
 
-import { ButtonProps } from "./interface";
-import { StyledSvgContainer } from "./styles";
+import { ButtonProps } from './interface';
+import { StyledSvgContainer } from './styles';
 
 export const ServerButton = (props: ButtonProps) => {
   const { children, isSelected, style, ...other } = props;
@@ -35,9 +35,9 @@ export const ServerButton = (props: ButtonProps) => {
       <Typography
         style={{
           paddingHorizontal: 12,
-          textAlign: "center",
+          textAlign: 'center',
           paddingVertical: 8,
-          color: isSelected ? colors.background : colors.text,
+          color: isSelected ? colors.background : colors.text
         }}
         variant="button"
       >

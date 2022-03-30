@@ -1,4 +1,4 @@
-import styled from "@emotion/native";
+import styled from '@emotion/native';
 
 export const YesNoButtonContainer = styled.TouchableOpacity`
   flex-direction: row;

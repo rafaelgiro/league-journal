@@ -1,7 +1,7 @@
-import styled, { css } from "@emotion/native";
+import styled, { css } from '@emotion/native';
 
-import { variants } from "./helpers";
-import { TypographyProps } from "./interfaces";
+import { variants } from './helpers';
+import { TypographyProps } from './interfaces';
 
 export const BaseTypography = styled.Text<TypographyProps>`
   ${({ variant, theme, hasError }) => css`

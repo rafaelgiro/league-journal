@@ -1,11 +1,11 @@
-import { TouchableOpacity } from "react-native";
-import Svg, { Path } from "react-native-svg";
-import { useTheme } from "@emotion/react";
+import { TouchableOpacity } from 'react-native';
+import Svg, { Path } from 'react-native-svg';
+import { useTheme } from '@emotion/react';
 
-import { Typography } from "../Typography";
+import { Typography } from '../Typography';
 
-import { CheckboxProps } from "./interfaces";
-import { CheckboxContainer } from "./styles";
+import { CheckboxProps } from './interfaces';
+import { CheckboxContainer } from './styles';
 
 export const Checkbox = (props: CheckboxProps) => {
   const { isChecked, handlePress, label, ...other } = props;

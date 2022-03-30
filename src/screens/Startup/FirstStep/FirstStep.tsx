@@ -1,6 +1,6 @@
-import { ServerSelection } from "../../../components/templates/ServerSelection";
-import { StartupStep } from "../../../components/templates/StartupStep";
-import { Wrapper } from "../../../components/templates/Wrapper";
+import { ServerSelection } from '../../../components/templates/ServerSelection';
+import { StartupStep } from '../../../components/templates/StartupStep';
+import { Wrapper } from '../../../components/templates/Wrapper';
 
 export const StartupFirstStep = () => {
   return (

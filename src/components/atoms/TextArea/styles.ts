@@ -1,8 +1,8 @@
-import styled from "@emotion/native";
+import styled from '@emotion/native';
 
 export const StyledTextArea = styled.TextInput`
   color: ${(props) => props.theme.colors.text};
-  font-family: "PatrickHand_400Regular";
+  font-family: 'PatrickHand_400Regular';
   font-size: 18px;
   letter-spacing: 2px;
   border-width: 2px;

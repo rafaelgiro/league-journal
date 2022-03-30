@@ -4,9 +4,9 @@ import {
   FC,
   SetStateAction,
   useEffect,
-  useState,
-} from "react";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+  useState
+} from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 interface SummonerContextProps {
   summonerName?: string;
@@ -16,21 +16,21 @@ interface SummonerContextProps {
 }
 
 export const SummonerContext = createContext<SummonerContextProps>({
-  summonerName: "",
-  setSummonerName: () => "",
-  server: "br1",
-  setServer: () => "",
+  summonerName: '',
+  setSummonerName: () => '',
+  server: 'br1',
+  setServer: () => ''
 });
 
 export const SummonerProvider: FC = (props) => {
-  const [server, setServer] = useState<Region>("br1");
+  const [server, setServer] = useState<Region>('br1');
   const [summonerName, setSummonerName] = useState<string>();
 
   useEffect(() => {
     async function saveSummoner() {
       try {
         const newValue = JSON.stringify({ server, summonerName });
-        await AsyncStorage.setItem("summoner", newValue);
+        await AsyncStorage.setItem('summoner', newValue);
       } catch (e) {
         // todo: error reading value
       }
@@ -42,7 +42,7 @@ export const SummonerProvider: FC = (props) => {
   useEffect(() => {
     async function loadSummoner() {
       try {
-        const value = await AsyncStorage.getItem("summoner");
+        const value = await AsyncStorage.getItem('summoner');
 
         if (value) {
           const localSummoner = JSON.parse(value);

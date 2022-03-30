@@ -1,4 +1,4 @@
-import { ViewProps } from "react-native";
+import { ViewProps } from 'react-native';
 
 export interface LaneProps extends ViewProps {
   handleChange: (selectedLane: string) => void;
@@ -30,6 +30,6 @@ export interface TextProps extends ViewProps {
   initialValue?: string;
 }
 export interface YesOrNoProps extends ViewProps {
-  handleChange: (response: "yes" | "no") => void;
-  initialValue?: "yes" | "no";
+  handleChange: (response: 'yes' | 'no') => void;
+  initialValue?: 'yes' | 'no';
 }

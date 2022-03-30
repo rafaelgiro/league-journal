@@ -1,1 +1,1 @@
-export * from "./YesNoButton";
+export * from './YesNoButton';

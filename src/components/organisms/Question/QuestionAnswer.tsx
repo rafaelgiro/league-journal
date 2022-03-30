@@ -1,16 +1,16 @@
-import { View } from "react-native";
+import { View } from 'react-native';
 
-import { Typography } from "../../atoms/Typography";
+import { Typography } from '../../atoms/Typography';
 import {
   LaneAnswer,
   MultipleChampionsAnswer,
   SingleChampionAnswer,
   Text,
-  YesOrNo,
-} from "../Answers";
-import { defaultAnswers } from "../Answers/helpers";
+  YesOrNo
+} from '../Answers';
+import { defaultAnswers } from '../Answers/helpers';
 
-import { QuestionAnswerProps } from "./interfaces";
+import { QuestionAnswerProps } from './interfaces';
 
 export const QuestionAnswer = (props: QuestionAnswerProps) => {
   const {
@@ -20,11 +20,11 @@ export const QuestionAnswer = (props: QuestionAnswerProps) => {
     enemyChampions,
     handleChange,
     initialValue,
-    isAnswering,
+    isAnswering
   } = props;
 
   switch (type) {
-    case "multiple-champions":
+    case 'multiple-champions':
       if (!allyChampions || !enemyChampions) return <></>;
 
       return (
@@ -36,7 +36,7 @@ export const QuestionAnswer = (props: QuestionAnswerProps) => {
         />
       );
 
-    case "single-champion":
+    case 'single-champion':
       if (!allyChampions || !enemyChampions) return <></>;
 
       return (
@@ -48,7 +48,7 @@ export const QuestionAnswer = (props: QuestionAnswerProps) => {
         />
       );
 
-    case "lane":
+    case 'lane':
       return (
         <LaneAnswer
           handleChange={(val) => handleChange(id, val)}
@@ -56,7 +56,7 @@ export const QuestionAnswer = (props: QuestionAnswerProps) => {
         />
       );
 
-    case "yesno":
+    case 'yesno':
       return (
         <YesOrNo
           handleChange={(val) => handleChange(id, val)}
@@ -64,7 +64,7 @@ export const QuestionAnswer = (props: QuestionAnswerProps) => {
         />
       );
 
-    case "text":
+    case 'text':
       return (
         <Text
           handleChange={(val) => handleChange(id, val)}
@@ -75,7 +75,7 @@ export const QuestionAnswer = (props: QuestionAnswerProps) => {
     default:
       return (
         <View
-          style={{ padding: 8, justifyContent: "center", alignItems: "center" }}
+          style={{ padding: 8, justifyContent: 'center', alignItems: 'center' }}
         >
           <Typography variant="title-1">hello</Typography>
         </View>

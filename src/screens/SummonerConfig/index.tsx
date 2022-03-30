@@ -1,1 +1,1 @@
-export * from "./SummonerConfig";
+export * from './SummonerConfig';

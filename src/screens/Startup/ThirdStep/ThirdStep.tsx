@@ -1,7 +1,7 @@
-import { Typography } from "../../../components/atoms/Typography";
-import { ReminderList } from "../../../components/templates/ReminderList";
-import { StartupStep } from "../../../components/templates/StartupStep";
-import { Wrapper } from "../../../components/templates/Wrapper";
+import { Typography } from '../../../components/atoms/Typography';
+import { ReminderList } from '../../../components/templates/ReminderList';
+import { StartupStep } from '../../../components/templates/StartupStep';
+import { Wrapper } from '../../../components/templates/Wrapper';
 
 export const StartupThirdStep = () => {
   return (

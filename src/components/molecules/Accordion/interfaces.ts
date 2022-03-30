@@ -1,5 +1,5 @@
-import { Dispatch, SetStateAction } from "react";
-import { TouchableOpacityProps, ViewProps } from "react-native";
+import { Dispatch, SetStateAction } from 'react';
+import { TouchableOpacityProps, ViewProps } from 'react-native';
 
 export interface AccordionProps extends ViewProps {
   expandedItem?: number;
@@ -9,7 +9,7 @@ export interface AccordionProps extends ViewProps {
 export interface AccordionItemProps extends ViewProps {
   title: string;
   setTitle: (title: string) => void;
-  type: "question" | "reminder";
+  type: 'question' | 'reminder';
   isOpen?: boolean;
   handlePress?: () => void;
   isAnswering?: boolean;

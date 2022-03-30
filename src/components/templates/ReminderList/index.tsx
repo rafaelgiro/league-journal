@@ -1,1 +1,1 @@
-export * from "./ReminderList";
+export * from './ReminderList';

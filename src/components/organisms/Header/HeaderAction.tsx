@@ -1,14 +1,14 @@
-import { useTheme } from "@emotion/react";
-import { useNavigation } from "@react-navigation/native";
-import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import { TouchableOpacity, View } from "react-native";
-import Svg, { Path } from "react-native-svg";
+import { useTheme } from '@emotion/react';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { TouchableOpacity, View } from 'react-native';
+import Svg, { Path } from 'react-native-svg';
 
-import { ServerButton } from "../../atoms/ServerButton";
-import { Typography } from "../../atoms/Typography";
+import { ServerButton } from '../../atoms/ServerButton';
+import { Typography } from '../../atoms/Typography';
 
-import { HeaderActionProps } from "./interfaces";
-import { CurrentServer, HeaderButton } from "./styles";
+import { HeaderActionProps } from './interfaces';
+import { CurrentServer, HeaderButton } from './styles';
 
 export const HeaderAction = (props: HeaderActionProps) => {
   const { isIntro, backButton, serverLabel, summonerName } = props;
@@ -34,9 +34,9 @@ export const HeaderAction = (props: HeaderActionProps) => {
       </HeaderButton>
     );
 
-  if (!isIntro && serverLabel && summonerName && summonerName !== "")
+  if (!isIntro && serverLabel && summonerName && summonerName !== '')
     return (
-      <TouchableOpacity onPress={() => navigation.navigate("SummonerConfig")}>
+      <TouchableOpacity onPress={() => navigation.navigate('SummonerConfig')}>
         <CurrentServer>
           <ServerButton
             style={{ transform: [{ scale: 0.75 }], marginLeft: -4 }}

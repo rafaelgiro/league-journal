@@ -1,4 +1,4 @@
-import styled, { css } from "@emotion/native";
+import styled, { css } from '@emotion/native';
 
 export const MainContainer = styled.View`
   flex: 1;

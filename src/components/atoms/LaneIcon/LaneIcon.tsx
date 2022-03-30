@@ -1,6 +1,6 @@
-import { TouchableOpacity } from "react-native";
-import { BaseLaneIcon } from "./BaseLaneIcon";
-import { LaneIconProps } from "./interfaces";
+import { TouchableOpacity } from 'react-native';
+import { BaseLaneIcon } from './BaseLaneIcon';
+import { LaneIconProps } from './interfaces';
 
 export const LaneIcon = (props: LaneIconProps) => {
   const { handlePress, lane, ...other } = props;

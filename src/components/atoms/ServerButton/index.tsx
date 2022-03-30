@@ -1,1 +1,1 @@
-export * from "./ServerButton";
+export * from './ServerButton';

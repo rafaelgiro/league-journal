@@ -1,5 +1,5 @@
-import { ServerSelection } from "../../components/templates/ServerSelection";
-import { Wrapper } from "../../components/templates/Wrapper";
+import { ServerSelection } from '../../components/templates/ServerSelection';
+import { Wrapper } from '../../components/templates/Wrapper';
 
 export const SummonerConfig = () => {
   return (

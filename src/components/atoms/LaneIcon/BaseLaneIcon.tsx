@@ -1,27 +1,27 @@
-import { View } from "react-native";
+import { View } from 'react-native';
 
-import { Typography } from "../Typography";
-import { BottomLane } from "./BottomLane";
-import { Jungle } from "./Jungle";
-import { MidLane } from "./MidLane";
-import { TopLane } from "./TopLane";
+import { Typography } from '../Typography';
+import { BottomLane } from './BottomLane';
+import { Jungle } from './Jungle';
+import { MidLane } from './MidLane';
+import { TopLane } from './TopLane';
 
-import { lanes } from "./helpers";
-import { LaneIconProps } from "./interfaces";
-import { LaneIconContainer } from "./styles";
+import { lanes } from './helpers';
+import { LaneIconProps } from './interfaces';
+import { LaneIconContainer } from './styles';
 
 export const BaseLaneIcon = (props: LaneIconProps) => {
   const { lane, ...other } = props;
 
   function renderIcon() {
     switch (lane) {
-      case "bot":
+      case 'bot':
         return <BottomLane />;
 
-      case "mid":
+      case 'mid':
         return <MidLane />;
 
-      case "top":
+      case 'top':
         return <TopLane />;
 
       default:

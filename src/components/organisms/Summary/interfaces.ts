@@ -1,3 +1,3 @@
 export interface SummaryProps {
-  variant: "questions" | "reminders";
+  variant: 'questions' | 'reminders';
 }

@@ -1,4 +1,4 @@
-import Constants from "expo-constants";
+import Constants from 'expo-constants';
 
 export function getAccount(summonerName: string, region: Region) {
   if (Constants.manifest?.extra?.apiUrl) {

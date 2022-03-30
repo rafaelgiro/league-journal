@@ -1,7 +1,7 @@
-import { useTheme } from "@emotion/react";
-import { Alert, TouchableOpacity } from "react-native";
-import Svg, { Path } from "react-native-svg";
-import { DeleteButtonProps } from "./interfaces";
+import { useTheme } from '@emotion/react';
+import { Alert, TouchableOpacity } from 'react-native';
+import Svg, { Path } from 'react-native-svg';
+import { DeleteButtonProps } from './interfaces';
 
 export const DeleteButton = (props: DeleteButtonProps) => {
   const { onDelete, title, ...other } = props;
@@ -9,15 +9,15 @@ export const DeleteButton = (props: DeleteButtonProps) => {
 
   function handlePress() {
     Alert.alert(
-      "Você tem certeza?",
+      'Você tem certeza?',
       `Confirme que você deseja deletar o item "${title}"`,
       [
         {
-          text: "Cancel",
+          text: 'Cancel',
           onPress: () => {},
-          style: "cancel",
+          style: 'cancel'
         },
-        { text: "Delete", onPress: onDelete },
+        { text: 'Delete', onPress: onDelete }
       ]
     );
   }

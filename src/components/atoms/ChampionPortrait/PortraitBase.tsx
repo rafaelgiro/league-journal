@@ -1,10 +1,10 @@
-import { useTheme } from "@emotion/react";
-import Svg, { Defs, Path, Pattern, Image, Use } from "react-native-svg";
+import { useTheme } from '@emotion/react';
+import Svg, { Defs, Path, Pattern, Image, Use } from 'react-native-svg';
 
-import { Typography } from "../Typography";
+import { Typography } from '../Typography';
 
-import { ChampionPortraitProps } from "./interfaces";
-import { PortraitContainer } from "./styles";
+import { ChampionPortraitProps } from './interfaces';
+import { PortraitContainer } from './styles';
 
 export const PortraitBase = (props: ChampionPortraitProps) => {
   const { championName, championId, isActive } = props;
@@ -40,7 +40,7 @@ export const PortraitBase = (props: ChampionPortraitProps) => {
             width="120"
             height="120"
             xlinkHref={{
-              uri: `https://assets.5pots.com/file/cincopots/champions/${championId}.png`,
+              uri: `https://assets.5pots.com/file/cincopots/champions/${championId}.png`
             }}
           />
         </Defs>
@@ -48,8 +48,8 @@ export const PortraitBase = (props: ChampionPortraitProps) => {
 
       <Typography
         style={{
-          textDecorationLine: isActive ? "underline" : "none",
-          textAlign: "center",
+          textDecorationLine: isActive ? 'underline' : 'none',
+          textAlign: 'center'
         }}
         variant="label-small"
       >

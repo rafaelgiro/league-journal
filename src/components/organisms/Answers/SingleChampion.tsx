@@ -1,13 +1,13 @@
-import { useEffect, useState } from "react";
-import { ChampionPortrait } from "../../atoms/ChampionPortrait";
-import { Typography } from "../../atoms/Typography";
-import { SingleChampionProps } from "./interfaces";
-import { ChampionsContainer, Portraits, Team } from "./styles";
+import { useEffect, useState } from 'react';
+import { ChampionPortrait } from '../../atoms/ChampionPortrait';
+import { Typography } from '../../atoms/Typography';
+import { SingleChampionProps } from './interfaces';
+import { ChampionsContainer, Portraits, Team } from './styles';
 
 export const SingleChampionAnswer = (props: SingleChampionProps) => {
   const { allyChampions, enemyChampions, handleChange, initialValue } = props;
   const [selectedChampion, setSelectedChampion] = useState<string>(
-    initialValue || ""
+    initialValue || ''
   );
 
   useEffect(() => {
@@ -17,7 +17,7 @@ export const SingleChampionAnswer = (props: SingleChampionProps) => {
   return (
     <ChampionsContainer>
       <Team>
-        <Typography variant="title-2" style={{ textAlign: "center" }}>
+        <Typography variant="title-2" style={{ textAlign: 'center' }}>
           MEU TIME
         </Typography>
         <Portraits>
@@ -33,7 +33,7 @@ export const SingleChampionAnswer = (props: SingleChampionProps) => {
         </Portraits>
       </Team>
       <Team>
-        <Typography variant="title-2" style={{ textAlign: "center" }}>
+        <Typography variant="title-2" style={{ textAlign: 'center' }}>
           TIME INIMIGO
         </Typography>
         <Portraits>

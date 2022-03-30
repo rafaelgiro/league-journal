@@ -1,15 +1,15 @@
-import { useEffect, useState } from "react";
-import { useNavigation } from "@react-navigation/native";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { useEffect, useState } from 'react';
+import { useNavigation } from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
-import { Accordion } from "../../../components/molecules/Accordion";
-import { Reminder } from "../../../components/organisms/Reminder";
-import { AddButton } from "../../../components/atoms/AddButton";
+import { Accordion } from '../../../components/molecules/Accordion';
+import { Reminder } from '../../../components/organisms/Reminder';
+import { AddButton } from '../../../components/atoms/AddButton';
 
-import { initialReminder } from "./helpers";
-import { ReminderListProps } from "./interfaces";
-import { AddMoreContainer } from "./styles";
+import { initialReminder } from './helpers';
+import { ReminderListProps } from './interfaces';
+import { AddMoreContainer } from './styles';
 
 export const ReminderList = (props: ReminderListProps) => {
   const { isAnswering } = props;
@@ -30,7 +30,7 @@ export const ReminderList = (props: ReminderListProps) => {
     const newReminder = {
       ...initialReminder,
       id: currentReminders.length,
-      title: "Novo Lembrete",
+      title: 'Novo Lembrete'
     };
 
     setReminders([...currentReminders, newReminder] as Reminder[]);
@@ -48,25 +48,25 @@ export const ReminderList = (props: ReminderListProps) => {
     async function saveData() {
       try {
         const newReminders = JSON.stringify(reminders);
-        await AsyncStorage.setItem("reminders", newReminders);
+        await AsyncStorage.setItem('reminders', newReminders);
       } catch (e) {
         // todo: error reading value
       }
     }
 
-    const unsubscribe = navigation.addListener("beforeRemove", saveData);
+    const unsubscribe = navigation.addListener('beforeRemove', saveData);
     return unsubscribe;
   }, [navigation, reminders]);
 
   useEffect(() => {
     async function getData() {
       try {
-        const jsonValue = await AsyncStorage.getItem("reminders");
-        if (jsonValue && jsonValue !== "[]")
+        const jsonValue = await AsyncStorage.getItem('reminders');
+        if (jsonValue && jsonValue !== '[]')
           setReminders(JSON.parse(jsonValue));
         else {
           const firstReminder = JSON.stringify([initialReminder]);
-          await AsyncStorage.setItem("reminders", firstReminder);
+          await AsyncStorage.setItem('reminders', firstReminder);
           setReminders([initialReminder]);
         }
       } catch (e) {
@@ -79,7 +79,10 @@ export const ReminderList = (props: ReminderListProps) => {
 
   return (
     <>
-      <Accordion expandedItem={expandedReminder}>
+      <Accordion
+        expandedItem={expandedReminder}
+        setExpandedItem={setExpandedReminder}
+      >
         {reminders
           .filter((r) => r.isActive)
           .map((r) => (

@@ -1,7 +1,7 @@
-import { useTheme } from "@emotion/react";
-import { TouchableOpacity } from "react-native";
-import Svg, { Path } from "react-native-svg";
-import { EditButtonProps } from "./interfaces";
+import { useTheme } from '@emotion/react';
+import { TouchableOpacity } from 'react-native';
+import Svg, { Path } from 'react-native-svg';
+import { EditButtonProps } from './interfaces';
 
 export const EditButton = (props: EditButtonProps) => {
   const { isEditing, setIsEditing, ...other } = props;

@@ -1,16 +1,16 @@
-import { TouchableOpacity, View } from "react-native";
-import { useState } from "react";
-import Svg, { Path } from "react-native-svg";
-import { useTheme } from "@emotion/react";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { useFocusEffect, useNavigation } from "@react-navigation/native";
-import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { TouchableOpacity, View } from 'react-native';
+import { useState } from 'react';
+import Svg, { Path } from 'react-native-svg';
+import { useTheme } from '@emotion/react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useFocusEffect, useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
-import { Typography } from "../../atoms/Typography";
+import { Typography } from '../../atoms/Typography';
 
-import { summaryTitles } from "./helpers";
-import { SummaryProps } from "./interfaces";
-import { SummaryTitleContainer } from "./styles";
+import { summaryTitles } from './helpers';
+import { SummaryProps } from './interfaces';
+import { SummaryTitleContainer } from './styles';
 
 export const Summary = (props: SummaryProps) => {
   const { variant } = props;
@@ -23,7 +23,7 @@ export const Summary = (props: SummaryProps) => {
     async function getData() {
       try {
         const jsonValue = await AsyncStorage.getItem(variant);
-        if (jsonValue && jsonValue !== "[]") {
+        if (jsonValue && jsonValue !== '[]') {
           const savedItems = JSON.parse(jsonValue);
           setItems(
             savedItems
@@ -44,7 +44,7 @@ export const Summary = (props: SummaryProps) => {
       <SummaryTitleContainer>
         <Typography
           variant="title-2"
-          style={{ textDecorationLine: "underline" }}
+          style={{ textDecorationLine: 'underline' }}
         >
           {summaryTitles[variant].title}
         </Typography>

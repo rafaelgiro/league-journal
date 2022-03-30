@@ -1,1 +1,1 @@
-export * from "./MatchHistory";
+export * from './MatchHistory';

@@ -1,9 +1,9 @@
-import Svg, { Path } from "react-native-svg";
+import Svg, { Path } from 'react-native-svg';
 
 export const ThemeIcon = (props: { themeName: string }) => {
   const { themeName } = props;
 
-  if (themeName === "dark")
+  if (themeName === 'dark')
     return (
       <Svg width="24" height="26" viewBox="0 0 24 26" fill="none">
         <Path

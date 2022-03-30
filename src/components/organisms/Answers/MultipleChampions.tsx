@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
-import { ChampionPortrait } from "../../atoms/ChampionPortrait";
-import { Typography } from "../../atoms/Typography";
-import { MultipleChampionsProps } from "./interfaces";
-import { ChampionsContainer, Portraits, Team } from "./styles";
+import { useEffect, useState } from 'react';
+import { ChampionPortrait } from '../../atoms/ChampionPortrait';
+import { Typography } from '../../atoms/Typography';
+import { MultipleChampionsProps } from './interfaces';
+import { ChampionsContainer, Portraits, Team } from './styles';
 
 export const MultipleChampionsAnswer = (props: MultipleChampionsProps) => {
   const { allyChampions, enemyChampions, handleChange, initialValue } = props;
@@ -36,14 +36,14 @@ export const MultipleChampionsAnswer = (props: MultipleChampionsProps) => {
   useEffect(() => {
     handleChange({
       ally: selectedAlliedChampions,
-      enemy: selectedEnemyChampions,
+      enemy: selectedEnemyChampions
     });
   }, [selectedAlliedChampions, selectedEnemyChampions]);
 
   return (
     <ChampionsContainer>
       <Team>
-        <Typography variant="title-2" style={{ textAlign: "center" }}>
+        <Typography variant="title-2" style={{ textAlign: 'center' }}>
           MEU TIME
         </Typography>
         <Portraits>
@@ -59,7 +59,7 @@ export const MultipleChampionsAnswer = (props: MultipleChampionsProps) => {
         </Portraits>
       </Team>
       <Team>
-        <Typography variant="title-2" style={{ textAlign: "center" }}>
+        <Typography variant="title-2" style={{ textAlign: 'center' }}>
           TIME INIMIGO
         </Typography>
         <Portraits>

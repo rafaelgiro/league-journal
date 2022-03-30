@@ -10,23 +10,24 @@ type RootStackParamList = {
   };
   Reminders: undefined;
   SummonerConfig: undefined;
+  GoodLuck: undefined;
 };
 
 type SummonerId = string;
 type AccountId = string;
 type PUUID = string;
 type Region =
-  | "br1"
-  | "eun1"
-  | "euw1"
-  | "na1"
-  | "jp1"
-  | "kr"
-  | "la1"
-  | "la2"
-  | "oc1"
-  | "tr1"
-  | "ru";
+  | 'br1'
+  | 'eun1'
+  | 'euw1'
+  | 'na1'
+  | 'jp1'
+  | 'kr'
+  | 'la1'
+  | 'la2'
+  | 'oc1'
+  | 'tr1'
+  | 'ru';
 
 interface Account {
   id: SummonerId;
@@ -83,7 +84,7 @@ interface Question {
   isNew?: boolean;
   answer?: any;
   title: string;
-  type: "text" | "single-champion" | "multiple-champions" | "lane" | "yesno";
+  type: 'text' | 'single-champion' | 'multiple-champions' | 'lane' | 'yesno';
   enemyChampions?: Champion[];
   allyChampions?: Champion[];
   isPreGame: boolean;

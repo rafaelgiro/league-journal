@@ -1,7 +1,7 @@
-import { QuestionList } from "../../components/templates/QuestionList";
-import { Wrapper } from "../../components/templates/Wrapper";
+import { QuestionList } from '../../components/templates/QuestionList';
+import { Wrapper } from '../../components/templates/Wrapper';
 
-import { QuestionsScreenProps } from "./interfaces";
+import { QuestionsScreenProps } from './interfaces';
 
 export const QuestionsScreen = (props: QuestionsScreenProps) => {
   return (

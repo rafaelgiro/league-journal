@@ -1,1 +1,1 @@
-export * from "./ServerSelection";
+export * from './ServerSelection';

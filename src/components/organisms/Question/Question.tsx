@@ -1,14 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
-import { Checkbox } from "../../atoms/Checkbox";
-import { RadioButton } from "../../atoms/RadioButton";
-import { Typography } from "../../atoms/Typography";
-import { AccordionItem } from "../../molecules/Accordion";
-import { QuestionAnswer } from "./QuestionAnswer";
+import { Checkbox } from '../../atoms/Checkbox';
+import { RadioButton } from '../../atoms/RadioButton';
+import { Typography } from '../../atoms/Typography';
+import { AccordionItem } from '../../molecules/Accordion';
+import { QuestionAnswer } from './QuestionAnswer';
 
-import { categories } from "./helpers";
-import { QuestionProps } from "./interfaces";
-import { CategoriesContainer, TimingContainer } from "./styles";
+import { categories } from './helpers';
+import { QuestionProps } from './interfaces';
+import { CategoriesContainer, TimingContainer } from './styles';
 
 export const Question = (props: QuestionProps) => {
   const {
@@ -28,11 +28,11 @@ export const Question = (props: QuestionProps) => {
   } = props;
   const [isPreGame, setIsPreGame] = useState(initialPregame);
   const [isPostGame, setIsPostGame] = useState(initialPostgame);
-  const [category, setCategory] = useState<Question["type"]>(type);
+  const [category, setCategory] = useState<Question['type']>(type);
   const [answer, setAnswer] = useState<any>(initialValue);
   const [title, setTitle] = useState(initialTitle);
 
-  function handleChange(id: number, ans: any) {
+  function handleChange(_: number, ans: any) {
     setAnswer(ans);
   }
 
@@ -47,7 +47,7 @@ export const Question = (props: QuestionProps) => {
         title,
         isActive: true,
         enemyChampions,
-        allyChampions,
+        allyChampions
       });
   }, [isPreGame, isPostGame, answer, title]);
 

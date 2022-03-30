@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
-import { Checkbox } from "../../atoms/Checkbox";
-import { Typography } from "../../atoms/Typography";
-import { AccordionItem } from "../../molecules/Accordion";
+import { Checkbox } from '../../atoms/Checkbox';
+import { Typography } from '../../atoms/Typography';
+import { AccordionItem } from '../../molecules/Accordion';
 
-import { ReminderProps } from "./interfaces";
-import { TimingContainer } from "../Question/styles";
+import { ReminderProps } from './interfaces';
+import { TimingContainer } from '../Question/styles';
 
 export const Reminder = (props: ReminderProps) => {
   const {
@@ -29,7 +29,7 @@ export const Reminder = (props: ReminderProps) => {
         isPreGame,
         isPostGame,
         title,
-        isActive: true,
+        isActive: true
       });
   }, [isPreGame, isPostGame, title]);
 

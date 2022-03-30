@@ -1,4 +1,4 @@
-import styled, { css } from "@emotion/native";
+import styled, { css } from '@emotion/native';
 
 export const AccordionArrow = styled.View<{ isOpen: boolean }>`
   ${({ isOpen }) =>
@@ -6,7 +6,7 @@ export const AccordionArrow = styled.View<{ isOpen: boolean }>`
       ? css`
           transform: rotate(180deg);
         `
-      : ""}
+      : ''}
 `;
 
 export const AccordionItemContainer = styled.View`
@@ -33,6 +33,6 @@ export const ActionsContainer = styled.View`
 
 export const EditableQuestionInput = styled.TextInput`
   font-size: 20px;
-  font-family: "PatrickHand_400Regular";
+  font-family: 'PatrickHand_400Regular';
   letter-spacing: 1px;
 `;

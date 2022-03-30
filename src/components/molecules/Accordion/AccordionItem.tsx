@@ -2,27 +2,27 @@ import {
   NativeSyntheticEvent,
   TextInput,
   TextInputKeyPressEventData,
-  TouchableOpacity,
-} from "react-native";
-import { useEffect, useRef, useState } from "react";
-import Svg, { Path } from "react-native-svg";
-import { useTheme } from "@emotion/react";
-import Collapsible from "react-native-collapsible";
+  TouchableOpacity
+} from 'react-native';
+import { useEffect, useRef, useState } from 'react';
+import Svg, { Path } from 'react-native-svg';
+import { useTheme } from '@emotion/react';
+import Collapsible from 'react-native-collapsible';
 
-import { Typography } from "../../atoms/Typography";
-import { EditButton } from "./EditButton";
-import { DeleteButton } from "./DeleteButton";
+import { Typography } from '../../atoms/Typography';
+import { EditButton } from './EditButton';
+import { DeleteButton } from './DeleteButton';
 
-import { AccordionItemProps } from "./interfaces";
+import { AccordionItemProps } from './interfaces';
 import {
   AccordionArrow,
   DividerContainer,
   AccordtionItemHeader,
   AccordionItemContainer,
   ActionsContainer,
-  EditableQuestionInput,
-} from "./styles";
-import { suggestions } from "./helpers";
+  EditableQuestionInput
+} from './styles';
+import { suggestions } from './helpers';
 
 export const AccordionItem = (props: AccordionItemProps) => {
   const {
@@ -39,30 +39,30 @@ export const AccordionItem = (props: AccordionItemProps) => {
   } = props;
   const [isEditing, setIsEditing] = useState(Boolean(isNew));
   const [newTitle, setNewTitle] = useState(title);
-  const [placeholder, setPlaceholder] = useState("");
+  const [placeholder, setPlaceholder] = useState('');
   const titleRef = useRef<TextInput>(null);
   const theme = useTheme();
 
   function handleNewTitleChange(
     e: NativeSyntheticEvent<TextInputKeyPressEventData>
   ) {
-    if (e.nativeEvent.key === "Enter") setIsEditing(false);
+    if (e.nativeEvent.key === 'Enter') setIsEditing(false);
   }
 
   useEffect(() => {
     if (isEditing) titleRef.current?.focus();
-    else if (newTitle === "") {
+    else if (newTitle === '') {
       setTitle(placeholder);
       setNewTitle(placeholder);
     } else setTitle(newTitle);
   }, [isEditing]);
 
   useEffect(() => {
-    if (newTitle === "")
+    if (newTitle === '')
       setPlaceholder(
         suggestions[type][Math.floor(Math.random() * suggestions[type].length)]
       );
-    else setPlaceholder("");
+    else setPlaceholder('');
   }, [newTitle]);
 
   if (!handlePress) return null;

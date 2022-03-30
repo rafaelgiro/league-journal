@@ -1,8 +1,8 @@
-import { useTheme } from "@emotion/react";
-import Svg, { Defs, Path, Pattern, Use, Image } from "react-native-svg";
-import { Typography } from "../../atoms/Typography";
-import { MatchProps } from "./interfaces";
-import { MatchContainer, MatchInfo } from "./styles";
+import { useTheme } from '@emotion/react';
+import Svg, { Defs, Path, Pattern, Use, Image } from 'react-native-svg';
+import { Typography } from '../../atoms/Typography';
+import { MatchProps } from './interfaces';
+import { MatchContainer, MatchInfo } from './styles';
 
 export const Match = (props: MatchProps) => {
   const { championId, date, kda } = props;
@@ -39,7 +39,7 @@ export const Match = (props: MatchProps) => {
               width="1215"
               height="717"
               xlinkHref={{
-                uri: `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${championId}_0.jpg`,
+                uri: `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${championId}_0.jpg`
               }}
             />
           </Defs>

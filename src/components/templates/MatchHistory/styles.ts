@@ -1,4 +1,4 @@
-import styled from "@emotion/native";
+import styled from '@emotion/native';
 
 export const MatchHistoryContainer = styled.View`
   margin-top: 24px;

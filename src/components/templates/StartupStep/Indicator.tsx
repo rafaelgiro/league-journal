@@ -1,6 +1,6 @@
-import { useTheme } from "@emotion/react";
-import { Path, Svg } from "react-native-svg";
-import { IndicatorProps } from "./interfaces";
+import { useTheme } from '@emotion/react';
+import { Path, Svg } from 'react-native-svg';
+import { IndicatorProps } from './interfaces';
 
 export const Indicator = (props: IndicatorProps) => {
   const { active } = props;

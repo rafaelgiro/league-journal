@@ -1,22 +1,22 @@
-import { useState } from "react";
-import Svg, { Path } from "react-native-svg";
-import { useTheme } from "@emotion/react";
+import { useState } from 'react';
+import Svg, { Path } from 'react-native-svg';
+import { useTheme } from '@emotion/react';
 import {
   useFonts,
-  PatrickHand_400Regular,
-} from "@expo-google-fonts/patrick-hand";
+  PatrickHand_400Regular
+} from '@expo-google-fonts/patrick-hand';
 
-import { Typography } from "../Typography";
+import { Typography } from '../Typography';
 
-import { StyledTextField, TextFieldContainer } from "./styles";
-import { TextFieldProps } from "./interfaces";
+import { StyledTextField, TextFieldContainer } from './styles';
+import { TextFieldProps } from './interfaces';
 
 export const TextField = (props: TextFieldProps) => {
   const { label, style, hasError, ...other } = props;
   const { colors } = useTheme();
   const [hasFocus, setHasFocus] = useState(false);
   const [fontLoaded] = useFonts({
-    PatrickHand_400Regular,
+    PatrickHand_400Regular
   });
 
   if (!fontLoaded) return null;

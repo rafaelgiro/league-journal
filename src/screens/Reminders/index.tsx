@@ -1,1 +1,1 @@
-export * from "./RemindersScreen";
+export * from './RemindersScreen';

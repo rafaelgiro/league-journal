@@ -1,4 +1,4 @@
-import { ViewProps } from "react-native";
+import { ViewProps } from 'react-native';
 
 export interface QuestionProps extends Question, ViewProps {
   isAnswering: boolean;
@@ -10,11 +10,11 @@ export interface QuestionProps extends Question, ViewProps {
 }
 
 export interface QuestionAnswerProps {
-  id: Question["id"];
-  type: Question["type"];
+  id: Question['id'];
+  type: Question['type'];
   allyChampions?: Champion[];
   enemyChampions?: Champion[];
-  handleChange: QuestionProps["handleChange"];
-  initialValue: QuestionProps["initialValue"];
-  isAnswering: QuestionProps["isAnswering"];
+  handleChange: QuestionProps['handleChange'];
+  initialValue: QuestionProps['initialValue'];
+  isAnswering: QuestionProps['isAnswering'];
 }

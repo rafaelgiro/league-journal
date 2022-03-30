@@ -1,8 +1,8 @@
-import { TouchableOpacity } from "react-native";
-import Svg, { Path } from "react-native-svg";
-import { useTheme } from "@emotion/react";
+import { TouchableOpacity } from 'react-native';
+import Svg, { Path } from 'react-native-svg';
+import { useTheme } from '@emotion/react';
 
-import { AddButtonProps } from "./interfaces";
+import { AddButtonProps } from './interfaces';
 
 export const AddButton = (props: AddButtonProps) => {
   const { handlePress, ...other } = props;

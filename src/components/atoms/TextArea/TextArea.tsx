@@ -1,27 +1,25 @@
-import { useState } from "react";
-import { useTheme } from "@emotion/react";
+import { useState } from 'react';
+import { useTheme } from '@emotion/react';
 import {
   useFonts,
-  PatrickHand_400Regular,
-} from "@expo-google-fonts/patrick-hand";
+  PatrickHand_400Regular
+} from '@expo-google-fonts/patrick-hand';
 
-import { StyledTextArea } from "./styles";
-import { TextAreaProps } from "./interfaces";
+import { StyledTextArea } from './styles';
+import { TextAreaProps } from './interfaces';
 export const TextArea = (props: TextAreaProps) => {
   const {
-    label,
     numberOfLines = 6,
-    placeholder = "Type here...",
-    style,
+    placeholder = 'Type here...',
     onChangeText,
     initialValue,
     ...other
   } = props;
   const { colors } = useTheme();
   const [fontLoaded] = useFonts({
-    PatrickHand_400Regular,
+    PatrickHand_400Regular
   });
-  const [val, setVal] = useState(initialValue || "");
+  const [val, setVal] = useState(initialValue || '');
 
   function handleChange() {
     if (onChangeText) onChangeText(val);

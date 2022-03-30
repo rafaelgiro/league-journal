@@ -1,8 +1,8 @@
-import { useTheme } from "@emotion/react";
-import Svg, { Path } from "react-native-svg";
+import { useTheme } from '@emotion/react';
+import Svg, { Path } from 'react-native-svg';
 
-import { Summary } from "../../organisms/Summary";
-import { SavedItemsContainer } from "./styles";
+import { Summary } from '../../organisms/Summary';
+import { SavedItemsContainer } from './styles';
 
 export const SavedItems = () => {
   const theme = useTheme();
@@ -15,7 +15,7 @@ export const SavedItems = () => {
         height="16"
         viewBox="0 0 286 16"
         fill="none"
-        style={{ marginVertical: 32, alignSelf: "center" }}
+        style={{ marginVertical: 32, alignSelf: 'center' }}
       >
         <Path
           d="M1 8.87793C30.671 11.6648 57.0628 11.9901 123.526 9.6252M4.23524 11.3132C39.2954 13.5901 75.2435 11.5593 120.124 9.46695L4.23524 11.3132Z"
