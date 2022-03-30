@@ -17,6 +17,7 @@ import { Homescreen } from './src/screens/Homescreen';
 import { QuestionsScreen } from './src/screens/Questions';
 import { RemindersScreen } from './src/screens/Reminders';
 import { SummonerConfig } from './src/screens/SummonerConfig';
+import { GoodLuckScreen } from './src/screens/GoodLuck/GoodLuck';
 
 const lightTheme = {
   themeName: 'light',
@@ -89,6 +90,11 @@ export default function App() {
               <Stack.Screen
                 name="Homescreen"
                 component={Homescreen}
+                options={{ animation: 'fade' }}
+              />
+              <Stack.Screen
+                name="GoodLuck"
+                component={GoodLuckScreen}
                 options={{ animation: 'fade' }}
               />
               <Stack.Screen

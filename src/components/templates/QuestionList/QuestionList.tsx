@@ -69,7 +69,7 @@ export const QuestionList = (props: QuestionListProps) => {
 
   function anweringBtnPress() {
     if (answeringAction === 'next') setExpandedQuestion((c) => c + 1);
-    else console.log('navigate');
+    else navigation.navigate('GoodLuck');
   }
 
   useEffect(() => {
