@@ -32,7 +32,7 @@ export const SummonerProvider: FC = (props) => {
         const newValue = JSON.stringify({ server, summonerName });
         await AsyncStorage.setItem("summoner", newValue);
       } catch (e) {
-        // error reading value
+        // todo: error reading value
       }
     }
 
@@ -50,7 +50,7 @@ export const SummonerProvider: FC = (props) => {
           setSummonerName(localSummoner.summonerName);
         }
       } catch (e) {
-        // error reading value
+        // todo: error reading value
       }
     }
 

@@ -34,9 +34,10 @@ export const AccordionItem = (props: AccordionItemProps) => {
     setTitle,
     onDelete,
     type,
+    isNew,
     ...other
   } = props;
-  const [isEditing, setIsEditing] = useState(false);
+  const [isEditing, setIsEditing] = useState(Boolean(isNew));
   const [newTitle, setNewTitle] = useState(title);
   const [placeholder, setPlaceholder] = useState("");
   const titleRef = useRef<TextInput>(null);
@@ -81,6 +82,7 @@ export const AccordionItem = (props: AccordionItemProps) => {
               multiline
               onKeyPress={handleNewTitleChange}
               placeholder={placeholder}
+              onBlur={() => setIsEditing(false)}
             />
           ) : (
             <Typography variant="title-2">{title}</Typography>

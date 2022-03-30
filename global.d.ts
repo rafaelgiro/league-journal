@@ -3,7 +3,11 @@ type RootStackParamList = {
   SecondStep: undefined;
   ThirdStep: undefined;
   Homescreen: undefined;
-  Questions: undefined;
+  Questions: {
+    allyChampions?: Champion[];
+    enemyChampions?: Champion[];
+    isAnswering?: boolean;
+  };
   Reminders: undefined;
   SummonerConfig: undefined;
 };
@@ -76,6 +80,7 @@ interface Champion {
 interface Question {
   id: number;
   isActive: boolean;
+  isNew?: boolean;
   answer?: any;
   title: string;
   type: "text" | "single-champion" | "multiple-champions" | "lane" | "yesno";

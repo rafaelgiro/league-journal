@@ -23,6 +23,7 @@ export const Question = (props: QuestionProps) => {
     isPreGame: initialPregame,
     handleChange: onChange,
     onDelete,
+    isNew,
     ...other
   } = props;
   const [isPreGame, setIsPreGame] = useState(initialPregame);
@@ -57,6 +58,7 @@ export const Question = (props: QuestionProps) => {
       isAnswering={isAnswering}
       type="question"
       onDelete={() => onDelete && onDelete(id)}
+      isNew={isNew}
       {...other}
     >
       {!isAnswering && (

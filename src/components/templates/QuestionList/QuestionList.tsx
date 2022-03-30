@@ -7,16 +7,30 @@ import { Accordion } from "../../../components/molecules/Accordion";
 import { Question } from "../../../components/organisms/Question";
 import { AddButton } from "../../../components/atoms/AddButton";
 
-import { initialQuestion } from "./helpers";
+import {
+  defaultAllyChampions,
+  defaultEnemyChampions,
+  initialQuestion,
+} from "./helpers";
 import { QuestionListProps } from "./interfaces";
-import { AddMoreContainer } from "./styles";
+import { ActionContainer, FinishButton } from "./styles";
+import { Typography } from "../../atoms/Typography";
+import { useTheme } from "@emotion/react";
 
 export const QuestionList = (props: QuestionListProps) => {
-  const { isAnswering, hasError } = props;
+  const { isAnswering, allyChampions, enemyChampions, hasError } = props;
   const [questions, setQuestions] = useState<Question[]>([]);
   const [expandedQuestion, setExpandedQuestion] = useState(0);
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+  const theme = useTheme();
+  const activeQuestions = questions.filter((q) => q.isActive);
+
+  console.log(activeQuestions.length, expandedQuestion);
+
+  const answeringAction =
+    expandedQuestion + 1 < activeQuestions.length ? "next" : "finish";
+  const answeringButton = { next: "PRÓXIMA PERGUNTA", finish: "FINALIZAR" };
 
   function handleChange(id: number, newValue: Question) {
     const newQuestions = [...questions];
@@ -32,10 +46,11 @@ export const QuestionList = (props: QuestionListProps) => {
       id: currentQuestions.length,
       title: "Nova Pergunta",
       type: "yesno",
+      isNew: true,
     };
 
     setQuestions([...currentQuestions, newQuestion] as Question[]);
-    setExpandedQuestion(currentQuestions.length);
+    setExpandedQuestion(currentQuestions.filter((q) => q.isActive).length);
   }
 
   function removeQuestion(id: number) {
@@ -45,18 +60,27 @@ export const QuestionList = (props: QuestionListProps) => {
     setQuestions(currentQuestions);
   }
 
+  function anweringBtnPress() {
+    if (answeringAction === "next") setExpandedQuestion((c) => c + 1);
+    else console.log("navigate");
+  }
+
   useEffect(() => {
     async function saveData() {
       try {
-        const newQuestions = JSON.stringify(questions);
+        const newQuestions = JSON.stringify(
+          questions.map((q) => ({ ...q, answer: undefined, isNew: false }))
+        );
         await AsyncStorage.setItem("questions", newQuestions);
       } catch (e) {
-        // error reading value
+        // todo: error reading value
       }
     }
 
-    const unsubscribe = navigation.addListener("beforeRemove", saveData);
-    return unsubscribe;
+    if (!isAnswering) {
+      const unsubscribe = navigation.addListener("beforeRemove", saveData);
+      return unsubscribe;
+    }
   }, [navigation, questions]);
 
   useEffect(() => {
@@ -71,7 +95,7 @@ export const QuestionList = (props: QuestionListProps) => {
           setQuestions([initialQuestion]);
         }
       } catch (e) {
-        // error reading value
+        // todo: error reading value
       }
     }
 
@@ -80,22 +104,37 @@ export const QuestionList = (props: QuestionListProps) => {
 
   return (
     <>
-      <Accordion expandedItem={expandedQuestion}>
-        {questions
-          .filter((q) => q.isActive)
-          .map((q) => (
-            <Question
-              {...q}
-              key={`question-${q.id}`}
-              isAnswering={isAnswering}
-              handleChange={handleChange}
-              onDelete={removeQuestion}
-            />
-          ))}
+      <Accordion
+        expandedItem={expandedQuestion}
+        setExpandedItem={setExpandedQuestion}
+      >
+        {activeQuestions.map((q) => (
+          <Question
+            {...q}
+            key={`question-${q.id}`}
+            isAnswering={isAnswering}
+            handleChange={handleChange}
+            onDelete={removeQuestion}
+            allyChampions={allyChampions || defaultAllyChampions}
+            enemyChampions={enemyChampions || defaultEnemyChampions}
+          />
+        ))}
       </Accordion>
-      <AddMoreContainer>
-        <AddButton handlePress={addQuestion} />
-      </AddMoreContainer>
+
+      <ActionContainer>
+        {!isAnswering ? (
+          <AddButton handlePress={addQuestion} />
+        ) : (
+          <FinishButton onPress={anweringBtnPress}>
+            <Typography
+              variant="title-3"
+              style={{ color: theme.colors.background }}
+            >
+              {answeringButton[answeringAction]}
+            </Typography>
+          </FinishButton>
+        )}
+      </ActionContainer>
     </>
   );
 };

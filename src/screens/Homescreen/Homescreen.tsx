@@ -1,4 +1,6 @@
 import { useTheme } from "@emotion/react";
+import { useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { useContext } from "react";
 
 import { Typography } from "../../components/atoms/Typography";
@@ -15,15 +17,22 @@ export const Homescreen = () => {
   const theme = useTheme();
   const { server, summonerName } = useContext(SummonerContext);
   const { setIsLoading } = useContext(UIContext);
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
   async function handleFindGame() {
     if (summonerName) {
       setIsLoading({ open: true, text: "Procurando partida..." });
       try {
         const match = await findMatch(summonerName, server);
-        console.log(match);
+        const { allyChampions, enemyChampions } = match.champions;
+        navigation.navigate("Questions", {
+          allyChampions,
+          enemyChampions,
+          isAnswering: true,
+        });
       } catch (error) {
-        console.log(error);
+        // todo: error reading value
       } finally {
         setIsLoading({ open: false, text: "" });
       }

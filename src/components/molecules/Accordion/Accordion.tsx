@@ -3,7 +3,7 @@ import { View } from "react-native";
 import { AccordionProps } from "./interfaces";
 
 export const Accordion = (props: AccordionProps) => {
-  const { children, expandedItem, ...other } = props;
+  const { children, expandedItem, setExpandedItem, ...other } = props;
   const [currentOpen, setCurrentOpen] = useState(expandedItem || 0);
 
   function renderChildrenWithProps() {
@@ -11,7 +11,10 @@ export const Accordion = (props: AccordionProps) => {
       const isOpen = index === currentOpen;
 
       return cloneElement(child as React.ReactElement, {
-        handlePress: () => setCurrentOpen(isOpen ? -1 : index),
+        handlePress: () => {
+          setCurrentOpen(isOpen ? -1 : index);
+          setExpandedItem(isOpen ? -1 : index);
+        },
         isOpen,
       });
     });

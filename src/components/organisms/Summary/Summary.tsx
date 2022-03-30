@@ -25,10 +25,14 @@ export const Summary = (props: SummaryProps) => {
         const jsonValue = await AsyncStorage.getItem(variant);
         if (jsonValue && jsonValue !== "[]") {
           const savedItems = JSON.parse(jsonValue);
-          setItems(savedItems.map((i: Question) => i.title));
+          setItems(
+            savedItems
+              .filter((i: Question) => i.isActive)
+              .map((i: Question) => i.title)
+          );
         }
       } catch (e) {
-        // error reading value
+        // todo: error reading value
       }
     }
 

@@ -50,7 +50,7 @@ export const ReminderList = (props: ReminderListProps) => {
         const newReminders = JSON.stringify(reminders);
         await AsyncStorage.setItem("reminders", newReminders);
       } catch (e) {
-        // error reading value
+        // todo: error reading value
       }
     }
 
@@ -70,7 +70,7 @@ export const ReminderList = (props: ReminderListProps) => {
           setReminders([initialReminder]);
         }
       } catch (e) {
-        // error reading value
+        // todo: error reading value
       }
     }
 

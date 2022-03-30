@@ -67,7 +67,7 @@ export default function App() {
         }
       } catch (error) {
         setInitialRoute("FirstStep");
-        // error reading value
+        // todo: error reading value
       }
     }
     checkSummonerAndSetNavigation();

@@ -1,6 +1,6 @@
 import { QuestionProps } from "../../../components/organisms/Question/interfaces";
 
-const allyChampions: Champion[] = [
+export const defaultAllyChampions: Champion[] = [
   { key: "Sion-ally", id: "Sion", name: "Sion" },
   { key: "Ivern-ally", id: "Ivern", name: "Ivern" },
   { key: "AurelionSol-ally", id: "AurelionSol", name: "Aurelion Sol" },
@@ -8,7 +8,7 @@ const allyChampions: Champion[] = [
   { key: "Bard-ally", id: "Bard", name: "Bard" },
 ];
 
-const enemyChampions: Champion[] = [
+export const defaultEnemyChampions: Champion[] = [
   { key: "Poppy-ally", id: "Poppy", name: "Poppy" },
   { key: "Nunu-ally", id: "Nunu", name: "Nunu and William" },
   { key: "Galio-ally", id: "Galio", name: "Galio" },
@@ -22,8 +22,8 @@ export const initialQuestion: Omit<QuestionProps, "isAnswering"> = {
   type: "multiple-champions",
   title: "Quem tem prioridade no início do jogo?",
   handleChange: () => {},
-  allyChampions,
-  enemyChampions,
+  allyChampions: defaultAllyChampions,
+  enemyChampions: defaultEnemyChampions,
   isPreGame: true,
   isPostGame: false,
 };
