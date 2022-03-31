@@ -54,7 +54,7 @@ export const QuestionList = (props: QuestionListProps) => {
     const newQuestion = {
       ...initialQuestion,
       id: currentQuestions.length,
-      title: 'Nova Pergunta',
+      title: '',
       type: 'yesno',
       isNew: true
     };
@@ -70,7 +70,7 @@ export const QuestionList = (props: QuestionListProps) => {
     setQuestions(currentQuestions);
   }
 
-  function anweringBtnPress() {
+  async function answeringBtnPress() {
     if (answeringAction === 'next') setExpandedQuestion((c) => c + 1);
     else {
       const filteredQuestions = questions
@@ -81,11 +81,31 @@ export const QuestionList = (props: QuestionListProps) => {
         }))
         .filter((q) => q.isActive);
 
+      console.log(currentMatch);
+
       const completedMatch = {
         ...currentMatch,
-        questions: filteredQuestions
+        questions: filteredQuestions,
+        date: new Date().toISOString()
       };
-      navigation.navigate('GoodLuck');
+
+      try {
+        const jsonValue = await AsyncStorage.getItem('matches');
+        if (jsonValue && jsonValue !== '[]') {
+          const matches = JSON.parse(jsonValue);
+          matches.unshift(completedMatch);
+          await AsyncStorage.setItem('matches', JSON.stringify(matches));
+        } else {
+          await AsyncStorage.setItem(
+            'matches',
+            JSON.stringify([completedMatch])
+          );
+        }
+        setCurrentMatch(undefined);
+        navigation.navigate('GoodLuck');
+      } catch (e) {
+        // todo: error reading value
+      }
     }
   }
 
@@ -149,7 +169,7 @@ export const QuestionList = (props: QuestionListProps) => {
         {!isAnswering ? (
           <AddButton handlePress={addQuestion} />
         ) : (
-          <FinishButton onPress={anweringBtnPress}>
+          <FinishButton onPress={answeringBtnPress}>
             <Typography
               variant="title-3"
               style={{ color: theme.colors.background }}

@@ -1,15 +1,32 @@
+import { useCallback, useEffect, useState } from 'react';
+import { useFocusEffect } from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ScrollView } from 'react-native';
+
 import { Typography } from '../../atoms/Typography';
+import { EmptyHistory } from './EmptyHistory';
 import { Match } from './Match';
+
 import { MatchHistoryContainer } from './styles';
 
 export const MatchHistory = () => {
-  const matches = [
-    { championId: 'Ivern', kda: '0/2/13', date: new Date() },
-    { championId: 'AurelionSol', kda: '1/7/2', date: new Date() },
-    { championId: 'Ivern', kda: '0/0/43', date: new Date() },
-    { championId: 'Sion', kda: '2/2/2', date: new Date() }
-  ];
+  const [history, setHistory] = useState<SavedMatch[]>([]);
+
+  useFocusEffect(
+    useCallback(() => {
+      async function getData() {
+        try {
+          const jsonValue = await AsyncStorage.getItem('matches');
+          if (jsonValue && jsonValue !== '[]')
+            setHistory(JSON.parse(jsonValue));
+        } catch (e) {
+          // todo: error reading value
+        }
+      }
+
+      getData();
+    }, [setHistory])
+  );
 
   return (
     <MatchHistoryContainer>
@@ -17,9 +34,20 @@ export const MatchHistory = () => {
         PARTIDAS RECENTES
       </Typography>
       <ScrollView horizontal>
-        {matches.map((m, i) => (
-          <Match key={`${m.date.toISOString()}-${i}`} {...m} />
-        ))}
+        {history.length ? (
+          history
+            .slice(0, 4)
+            .map((m, i) => (
+              <Match
+                key={`${m.date}-${i}`}
+                championId={m.championId}
+                date={m.date}
+                summonerName={m.summonerName}
+              />
+            ))
+        ) : (
+          <EmptyHistory />
+        )}
       </ScrollView>
     </MatchHistoryContainer>
   );

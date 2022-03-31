@@ -1,13 +1,5 @@
 import { createContext, Dispatch, FC, SetStateAction, useState } from 'react';
 
-type CurrentMatch = {
-  gameId: number;
-  summonerName: string;
-  championId: string;
-  allyChampions: Champion[];
-  enemyChampions: Champion[];
-};
-
 interface MatchContextProps {
   currentMatch?: CurrentMatch;
   setCurrentMatch: Dispatch<SetStateAction<CurrentMatch | undefined>>;

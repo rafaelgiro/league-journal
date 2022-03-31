@@ -18,6 +18,7 @@ import { QuestionsScreen } from './src/screens/Questions';
 import { RemindersScreen } from './src/screens/Reminders';
 import { SummonerConfig } from './src/screens/SummonerConfig';
 import { GoodLuckScreen } from './src/screens/GoodLuck/GoodLuck';
+import { MatchProvider } from './src/context/Match/MatchContext';
 
 const lightTheme = {
   themeName: 'light',
@@ -79,53 +80,55 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <UIProvider>
-        <SummonerProvider>
-          <StatusBar style={isDark ? 'light' : 'dark'} />
+        <MatchProvider>
+          <SummonerProvider>
+            <StatusBar style={isDark ? 'light' : 'dark'} />
 
-          <NavigationContainer>
-            <Stack.Navigator
-              screenOptions={{ headerShown: false }}
-              initialRouteName={initialRoute as 'FirstStep' | 'Homescreen'}
-            >
-              <Stack.Screen
-                name="Homescreen"
-                component={Homescreen}
-                options={{ animation: 'fade' }}
-              />
-              <Stack.Screen
-                name="GoodLuck"
-                component={GoodLuckScreen}
-                options={{ animation: 'fade' }}
-              />
-              <Stack.Screen
-                name="Questions"
-                component={QuestionsScreen}
-                options={{ animation: 'fade' }}
-              />
-              <Stack.Screen
-                name="Reminders"
-                component={RemindersScreen}
-                options={{ animation: 'fade' }}
-              />
-              <Stack.Screen
-                name="SummonerConfig"
-                component={SummonerConfig}
-                options={{ animation: 'fade' }}
-              />
-              <Stack.Screen name="FirstStep" component={StartupFirstStep} />
-              <Stack.Screen
-                name="SecondStep"
-                component={StartupSecondStep}
-                options={{ animation: 'fade' }}
-              />
-              <Stack.Screen
-                name="ThirdStep"
-                component={StartupThirdStep}
-                options={{ animation: 'fade' }}
-              />
-            </Stack.Navigator>
-          </NavigationContainer>
-        </SummonerProvider>
+            <NavigationContainer>
+              <Stack.Navigator
+                screenOptions={{ headerShown: false }}
+                initialRouteName={initialRoute as 'FirstStep' | 'Homescreen'}
+              >
+                <Stack.Screen
+                  name="Homescreen"
+                  component={Homescreen}
+                  options={{ animation: 'fade' }}
+                />
+                <Stack.Screen
+                  name="GoodLuck"
+                  component={GoodLuckScreen}
+                  options={{ animation: 'fade' }}
+                />
+                <Stack.Screen
+                  name="Questions"
+                  component={QuestionsScreen}
+                  options={{ animation: 'fade' }}
+                />
+                <Stack.Screen
+                  name="Reminders"
+                  component={RemindersScreen}
+                  options={{ animation: 'fade' }}
+                />
+                <Stack.Screen
+                  name="SummonerConfig"
+                  component={SummonerConfig}
+                  options={{ animation: 'fade' }}
+                />
+                <Stack.Screen name="FirstStep" component={StartupFirstStep} />
+                <Stack.Screen
+                  name="SecondStep"
+                  component={StartupSecondStep}
+                  options={{ animation: 'fade' }}
+                />
+                <Stack.Screen
+                  name="ThirdStep"
+                  component={StartupThirdStep}
+                  options={{ animation: 'fade' }}
+                />
+              </Stack.Navigator>
+            </NavigationContainer>
+          </SummonerProvider>
+        </MatchProvider>
       </UIProvider>
     </ThemeProvider>
   );

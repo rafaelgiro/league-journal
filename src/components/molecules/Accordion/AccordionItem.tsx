@@ -93,7 +93,7 @@ export const AccordionItem = (props: AccordionItemProps) => {
               <Path
                 d="M6.79193 6.71437C4.54211 6.05578 2.32343 4.13521 1.87969 2.84958M11.9066 2.35662C11.5096 3.98141 9.48549 5.52338 6.66737 7.13634L11.9066 2.35662ZM12 1.3707C10.5403 3.1138 7.97912 4.58479 6.38323 7.72L12 1.3707ZM7.9402 8C5.16879 6.40282 3.94657 3.25972 1 1L7.9402 8Z"
                 stroke={theme.colors.text}
-                stroke-linecap="round"
+                strokeLinecap="round"
               />
             </Svg>
           </AccordionArrow>

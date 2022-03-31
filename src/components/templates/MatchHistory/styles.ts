@@ -2,6 +2,7 @@ import styled from '@emotion/native';
 
 export const MatchHistoryContainer = styled.View`
   margin-top: 24px;
+  margin-bottom: 16px;
 `;
 
 export const MatchContainer = styled.TouchableHighlight`

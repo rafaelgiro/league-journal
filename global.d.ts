@@ -99,3 +99,16 @@ interface Reminder {
   isPreGame: boolean;
   isPostGame: boolean;
 }
+
+interface CurrentMatch {
+  gameId: number;
+  summonerName: string;
+  championId: string;
+  allyChampions: Champion[];
+  enemyChampions: Champion[];
+}
+
+interface SavedMatch extends CurrentMatch {
+  questions: Question[];
+  date: string;
+}
