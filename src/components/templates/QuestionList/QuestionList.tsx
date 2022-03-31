@@ -1,11 +1,15 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { useTheme } from '@emotion/react';
 import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
-import { Accordion } from '../../../components/molecules/Accordion';
-import { Question } from '../../../components/organisms/Question';
-import { AddButton } from '../../../components/atoms/AddButton';
+import { Typography } from '../../atoms/Typography';
+import { AddButton } from '../../atoms/AddButton';
+import { Accordion } from '../../molecules/Accordion';
+import { Question } from '../../organisms/Question';
+
+import { MatchContext } from '../../../context/Match/MatchContext';
 
 import {
   defaultAllyChampions,
@@ -14,8 +18,6 @@ import {
 } from './helpers';
 import { QuestionListProps } from './interfaces';
 import { ActionContainer, FinishButton } from './styles';
-import { Typography } from '../../atoms/Typography';
-import { useTheme } from '@emotion/react';
 
 /**
  * The code is using this component to create new question
@@ -30,6 +32,7 @@ export const QuestionList = (props: QuestionListProps) => {
   const { isAnswering, allyChampions, enemyChampions } = props;
   const [questions, setQuestions] = useState<Question[]>([]);
   const [expandedQuestion, setExpandedQuestion] = useState(0);
+  const { currentMatch, setCurrentMatch } = useContext(MatchContext);
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const theme = useTheme();
@@ -69,7 +72,21 @@ export const QuestionList = (props: QuestionListProps) => {
 
   function anweringBtnPress() {
     if (answeringAction === 'next') setExpandedQuestion((c) => c + 1);
-    else navigation.navigate('GoodLuck');
+    else {
+      const filteredQuestions = questions
+        .map((q) => ({
+          ...q,
+          allyChampions: undefined,
+          enemyChampions: undefined
+        }))
+        .filter((q) => q.isActive);
+
+      const completedMatch = {
+        ...currentMatch,
+        questions: filteredQuestions
+      };
+      navigation.navigate('GoodLuck');
+    }
   }
 
   useEffect(() => {

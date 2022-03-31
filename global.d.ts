@@ -76,6 +76,7 @@ interface Champion {
   name: string;
   key: string;
   id: string;
+  isMe: boolean;
 }
 
 interface Question {

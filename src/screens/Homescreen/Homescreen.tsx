@@ -7,6 +7,7 @@ import { Typography } from '../../components/atoms/Typography';
 import { MatchHistory } from '../../components/templates/MatchHistory';
 import { SavedItems } from '../../components/templates/SavedItems';
 import { Wrapper } from '../../components/templates/Wrapper';
+import { MatchContext } from '../../context/Match/MatchContext';
 import { SummonerContext } from '../../context/Summoner/SummonerContext';
 import { UIContext } from '../../context/UI/UIContext';
 import { findMatch } from '../../utils/findMatch';
@@ -17,6 +18,7 @@ export const Homescreen = () => {
   const theme = useTheme();
   const { server, summonerName } = useContext(SummonerContext);
   const { setIsLoading } = useContext(UIContext);
+  const { setCurrentMatch } = useContext(MatchContext);
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
@@ -25,7 +27,22 @@ export const Homescreen = () => {
       setIsLoading({ open: true, text: 'Procurando partida...' });
       try {
         const match = await findMatch(summonerName, server);
-        const { allyChampions, enemyChampions } = match.champions;
+        const { allyChampions, enemyChampions } = match.champions as {
+          allyChampions: Champion[];
+          enemyChampions: Champion[];
+        };
+        const { name } = match.account;
+        const { gameId } = match.match;
+        const championId = allyChampions.find((a: Champion) => a.isMe)!.id;
+
+        setCurrentMatch({
+          allyChampions,
+          championId,
+          enemyChampions,
+          gameId,
+          summonerName: name
+        });
+
         navigation.navigate('Questions', {
           allyChampions,
           enemyChampions,

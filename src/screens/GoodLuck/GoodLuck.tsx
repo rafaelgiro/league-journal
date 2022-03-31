@@ -27,7 +27,7 @@ export const GoodLuckScreen = () => {
   }, []);
 
   return (
-    <Wrapper backButton>
+    <Wrapper homeButton>
       <GoodLuckContainer>
         <GoodLuckTitle>
           <Typography
@@ -41,7 +41,7 @@ export const GoodLuckScreen = () => {
           </Typography>
         </GoodLuckTitle>
         {reminders.map((r) => (
-          <GoodLuckReminder>
+          <GoodLuckReminder key={r.id}>
             <Svg width="22" height="44" viewBox="0 0 22 44" fill="none">
               <Path
                 fill-rule="evenodd"
