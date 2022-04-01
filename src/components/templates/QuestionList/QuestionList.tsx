@@ -81,8 +81,6 @@ export const QuestionList = (props: QuestionListProps) => {
         }))
         .filter((q) => q.isActive);
 
-      console.log(currentMatch);
-
       const completedMatch = {
         ...currentMatch,
         questions: filteredQuestions,
