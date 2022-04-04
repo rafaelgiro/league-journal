@@ -7,8 +7,8 @@ export const Jungle = () => {
   return (
     <Svg width="50" height="55" viewBox="0 0 50 55" fill="none">
       <Path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
+        fillRule="evenodd"
+        clipRule="evenodd"
         d="M1.57788 17.7712L5.61925 22.3907L8.57401 26.9406L9.56428 38.9684L14.2266 42.3353L24.5093 53.5013L24.777 53.9348L26.3989 51.8419L27.6086 40.5207L25.2908 29.4029L18.8621 15.6301L10.9721 2.37656L13.4879 10.0364L18.1555 24.7674L17.3687 30.3236L17.1385 32.5878L17.0368 34.7825L16.1536 29.6973L15.2918 26.5499L11.1541 22.7387L2.15063 17.2306"
         fill={theme.colors.text}
       />
@@ -19,8 +19,8 @@ export const Jungle = () => {
         strokeLinecap="round"
       />
       <Path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
+        fillRule="evenodd"
+        clipRule="evenodd"
         d="M26.7207 23.6468L31.1368 14.3276L41.4516 1.56647L35.8686 8.4823L34.402 15.6551L30.6496 33.7315L25.5002 24.2838"
         fill={theme.colors.text}
       />
@@ -31,8 +31,8 @@ export const Jungle = () => {
         strokeLinecap="round"
       />
       <Path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
+        fillRule="evenodd"
+        clipRule="evenodd"
         d="M32.2284 47.1879L33.3524 39.9938L35.7826 28.9081L43.1909 20.8949L47.1895 17.0141L47.987 15.9971L41.4512 25.7339L40.0702 30.5353L40.0916 41.3908L31.9661 46.9899"
         fill={theme.colors.text}
       />

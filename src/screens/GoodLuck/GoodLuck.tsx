@@ -44,8 +44,8 @@ export const GoodLuckScreen = () => {
           <GoodLuckReminder key={r.id}>
             <Svg width="22" height="44" viewBox="0 0 22 44" fill="none">
               <Path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
+                fillRule="evenodd"
+                clipRule="evenodd"
                 d="M1 7.73797C4.09826 5.75869 8.26136 5.21123 16.2627 1.03008L1 7.73797ZM1.51136 7.69585C5.60829 5.09692 9.79545 3.92981 15.0956 1.9746L1.51136 7.69585ZM15.986 1C16.1664 11.4739 15.5348 19.3249 12.7854 31.5555L15.986 1ZM16.0582 2.14906C15.5167 8.33355 15.0775 15.1979 13.6217 30.9118L16.0582 2.14906ZM14.1811 30.3523C12.0936 25.6598 7.68382 21.2861 1.28275 8.09291L14.1811 30.3523ZM13.7721 30.244C8.94719 21.5869 5.28944 13.748 1.62567 7.77406L13.7721 30.244Z"
                 stroke={theme.colors.text}
                 strokeLinecap="round"

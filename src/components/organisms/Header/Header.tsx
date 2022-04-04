@@ -3,7 +3,8 @@ import { useTheme } from '@emotion/react';
 
 import { ThemeIcon } from './ThemeIcon';
 import { Typography } from '../../atoms/Typography';
-import { LoadingOverlay } from '../../templates/LoadingOverlay/LoadingOverlay';
+import { LoadingOverlay } from '../../templates/LoadingOverlay';
+import { ErrorOverlay } from '../../templates/ErrorOverlay';
 import { SummonerContext } from '../../../context/Summoner/SummonerContext';
 import { servers } from '../../templates/ServerSelection/helpers';
 
@@ -19,6 +20,7 @@ export const Header = (props: HeaderProps) => {
   return (
     <DefaultHeader>
       <LoadingOverlay />
+      <ErrorOverlay />
       <HeaderContent>
         <HeaderAction
           summonerName={summonerName}

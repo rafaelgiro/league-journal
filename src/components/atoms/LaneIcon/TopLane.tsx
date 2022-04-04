@@ -7,8 +7,8 @@ export const TopLane = () => {
   return (
     <Svg width="49" height="47" viewBox="0 0 49 47" fill="none">
       <Path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
+        fillRule="evenodd"
+        clipRule="evenodd"
         d="M4.6447 39.0358L1.13428 15.4587L1.50715 7.77394L3.70798 4.49997L7.4594 2.31278L16.6765 1.9581L29.5314 2.5174L42.3817 4.90012L42.4499 6.11422L40.4491 8.20592L31.8186 11.7709L14.5939 9.9975L10.9198 11.0979L10.2059 16.1316L11.9293 32.7379L10.8561 36.8804L6.4954 40.55"
         fill={theme.colors.text}
       />
@@ -19,8 +19,8 @@ export const TopLane = () => {
         strokeLinecap="round"
       />
       <Path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
+        fillRule="evenodd"
+        clipRule="evenodd"
         d="M46.6127 8.05754L49 31.3527L47.5085 41.0109L46.4945 43.2709L42.111 45.3898L32.6484 46.945L21.144 45.6308L7.86626 42.7934L8.52106 41.9431L10.7219 39.7786L18.1974 36.3319L34.7764 37.2731L39.1917 36.9457L40.1194 31.4482L37.05 13.9871L38.6506 11.3315L44.2437 6.99805"
         fill={theme.colors.background}
       />

@@ -73,7 +73,6 @@ export default function App() {
       }
     }
     checkSummonerAndSetNavigation();
-    AsyncStorage.clear();
   }, []);
 
   if (!initialRoute) return null;
