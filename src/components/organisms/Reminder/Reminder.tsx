@@ -16,6 +16,7 @@ export const Reminder = (props: ReminderProps) => {
     isPreGame: initialPregame,
     handleChange: onChange,
     onDelete,
+    isNew,
     ...other
   } = props;
   const [isPreGame, setIsPreGame] = useState(initialPregame);
@@ -40,6 +41,7 @@ export const Reminder = (props: ReminderProps) => {
       isAnswering={isAnswering}
       type="reminder"
       onDelete={() => onDelete && onDelete(id)}
+      isNew={isNew}
       {...other}
     >
       {!isAnswering && (

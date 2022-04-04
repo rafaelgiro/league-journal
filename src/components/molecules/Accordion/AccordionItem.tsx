@@ -85,7 +85,9 @@ export const AccordionItem = (props: AccordionItemProps) => {
               onBlur={() => setIsEditing(false)}
             />
           ) : (
-            <Typography variant="title-2">{title}</Typography>
+            <Typography variant="title-2" style={{ maxWidth: '90%' }}>
+              {title}
+            </Typography>
           )}
 
           <AccordionArrow isOpen={isOpen!}>

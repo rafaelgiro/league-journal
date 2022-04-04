@@ -30,11 +30,12 @@ export const ReminderList = (props: ReminderListProps) => {
     const newReminder = {
       ...initialReminder,
       id: currentReminders.length,
-      title: 'Novo Lembrete'
+      title: '',
+      isNew: true
     };
 
     setReminders([...currentReminders, newReminder] as Reminder[]);
-    setExpandedReminder(currentReminders.length);
+    setExpandedReminder(currentReminders.filter((r) => r.isActive).length);
   }
 
   function removeReminder(id: number) {
@@ -47,14 +48,23 @@ export const ReminderList = (props: ReminderListProps) => {
   useEffect(() => {
     async function saveData() {
       try {
-        const newReminders = JSON.stringify(reminders);
+        const newReminders = JSON.stringify(
+          reminders.map((r) => ({ ...r, isNew: false }))
+        );
         await AsyncStorage.setItem('reminders', newReminders);
       } catch (e) {
         // todo: error reading value
       }
     }
 
-    const unsubscribe = navigation.addListener('beforeRemove', saveData);
+    navigation.addListener('blur', saveData);
+    navigation.addListener('beforeRemove', saveData);
+
+    const unsubscribe = () => {
+      navigation.removeListener('blur', saveData);
+      navigation.removeListener('beforeRemove', saveData);
+    };
+
     return unsubscribe;
   }, [navigation, reminders]);
 

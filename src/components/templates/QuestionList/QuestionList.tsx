@@ -109,21 +109,28 @@ export const QuestionList = (props: QuestionListProps) => {
 
   useEffect(() => {
     async function saveData() {
-      try {
-        const newQuestions = JSON.stringify(
-          questions.map((q) => ({ ...q, answer: undefined, isNew: false }))
-        );
-        await AsyncStorage.setItem('questions', newQuestions);
-      } catch (e) {
-        // todo: error reading value
+      if (!isAnswering) {
+        try {
+          const newQuestions = JSON.stringify(
+            questions.map((q) => ({ ...q, answer: undefined, isNew: false }))
+          );
+          await AsyncStorage.setItem('questions', newQuestions);
+        } catch (e) {
+          // todo: error reading value
+        }
       }
     }
 
-    if (!isAnswering) {
-      const unsubscribe = navigation.addListener('beforeRemove', saveData);
-      return unsubscribe;
-    }
-  }, [navigation, questions]);
+    navigation.addListener('blur', saveData);
+    navigation.addListener('beforeRemove', saveData);
+
+    const unsubscribe = () => {
+      navigation.removeListener('blur', saveData);
+      navigation.removeListener('beforeRemove', saveData);
+    };
+
+    return unsubscribe;
+  }, [navigation, questions, isAnswering]);
 
   useEffect(() => {
     async function getData() {

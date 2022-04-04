@@ -94,6 +94,7 @@ interface Question {
 
 interface Reminder {
   id: number;
+  isNew?: boolean;
   isActive: boolean;
   title: string;
   isPreGame: boolean;
