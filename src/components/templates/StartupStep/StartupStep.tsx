@@ -21,7 +21,7 @@ import { UIContext } from '../../../context/UI/UIContext';
 export const StartupStep = (props: StartupStepProps) => {
   const { children, step } = props;
   const [hasError, setHasError] = useState(false);
-  const { setIsLoading } = useContext(UIContext);
+  const { setIsLoading, showError } = useContext(UIContext);
   const { server, summonerName } = useContext(SummonerContext);
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
@@ -52,8 +52,8 @@ export const StartupStep = (props: StartupStepProps) => {
             navigation.navigate(screens[step + 1]);
           }
         }
-      } catch (error) {
-        // lida com chamad ade api falha
+      } catch (_) {
+        showError(`${summonerName} parece não existir nesse servidor.`);
         setIsLoading({ open: false, text: '' });
       }
     } else {

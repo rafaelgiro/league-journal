@@ -1,5 +1,5 @@
 import { TouchableOpacity, View } from 'react-native';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import Svg, { Path } from 'react-native-svg';
 import { useTheme } from '@emotion/react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -7,6 +7,7 @@ import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 import { Typography } from '../../atoms/Typography';
+import { UIContext } from '../../../context/UI/UIContext';
 
 import { summaryTitles } from './helpers';
 import { SummaryProps } from './interfaces';
@@ -18,6 +19,7 @@ export const Summary = (props: SummaryProps) => {
   const theme = useTheme();
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+  const { showError } = useContext(UIContext);
 
   useFocusEffect(() => {
     async function getData() {
@@ -31,8 +33,8 @@ export const Summary = (props: SummaryProps) => {
               .map((i: Question) => i.title)
           );
         }
-      } catch (e) {
-        // todo: error reading value
+      } catch (_) {
+        showError('Erro ao carregar resumo de peguntas ou lembretes');
       }
     }
 

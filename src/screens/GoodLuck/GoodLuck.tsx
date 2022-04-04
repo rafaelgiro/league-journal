@@ -1,15 +1,17 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useTheme } from '@emotion/react';
 import Svg, { Path } from 'react-native-svg';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { Typography } from '../../components/atoms/Typography';
+import { Wrapper } from '../../components/templates/Wrapper';
+import { UIContext } from '../../context/UI/UIContext';
 
 import { GoodLuckContainer, GoodLuckReminder, GoodLuckTitle } from './styles';
-import { Wrapper } from '../../components/templates/Wrapper';
 
 export const GoodLuckScreen = () => {
   const [reminders, setReminders] = useState<Reminder[]>([]);
+  const { showError } = useContext(UIContext);
   const theme = useTheme();
 
   useEffect(() => {
@@ -18,8 +20,8 @@ export const GoodLuckScreen = () => {
         const jsonValue = await AsyncStorage.getItem('reminders');
         if (jsonValue && jsonValue !== '[]')
           setReminders(JSON.parse(jsonValue));
-      } catch (e) {
-        // todo: error reading value
+      } catch (_) {
+        showError('Ocorreu um erro ao carregar lembretes');
       }
     }
 

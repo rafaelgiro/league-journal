@@ -10,6 +10,7 @@ import { Accordion } from '../../molecules/Accordion';
 import { Question } from '../../organisms/Question';
 
 import { MatchContext } from '../../../context/Match/MatchContext';
+import { UIContext } from '../../../context/UI/UIContext';
 
 import {
   defaultAllyChampions,
@@ -36,6 +37,7 @@ export const QuestionList = (props: QuestionListProps) => {
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const theme = useTheme();
+  const { showError } = useContext(UIContext);
   const activeQuestions = questions.filter((q) => q.isActive);
 
   const answeringAction =
@@ -101,8 +103,8 @@ export const QuestionList = (props: QuestionListProps) => {
         }
         setCurrentMatch(undefined);
         navigation.navigate('GoodLuck');
-      } catch (e) {
-        // todo: error reading value
+      } catch (_) {
+        showError('Erro ao salvar a partida');
       }
     }
   }
@@ -115,8 +117,8 @@ export const QuestionList = (props: QuestionListProps) => {
             questions.map((q) => ({ ...q, answer: undefined, isNew: false }))
           );
           await AsyncStorage.setItem('questions', newQuestions);
-        } catch (e) {
-          // todo: error reading value
+        } catch (_) {
+          showError('Erro ao salvar as perguntas');
         }
       }
     }
@@ -143,8 +145,8 @@ export const QuestionList = (props: QuestionListProps) => {
           await AsyncStorage.setItem('questions', firstQuestion);
           setQuestions([initialQuestion]);
         }
-      } catch (e) {
-        // todo: error reading value
+      } catch (_) {
+        showError('Erro ao carregar as perguntas');
       }
     }
 

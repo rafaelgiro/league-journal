@@ -1,9 +1,10 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useContext, useState } from 'react';
 import { useFocusEffect } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ScrollView } from 'react-native';
 
 import { Typography } from '../../atoms/Typography';
+import { UIContext } from '../../../context/UI/UIContext';
 import { EmptyHistory } from './EmptyHistory';
 import { Match } from './Match';
 
@@ -11,6 +12,7 @@ import { MatchHistoryContainer } from './styles';
 
 export const MatchHistory = () => {
   const [history, setHistory] = useState<SavedMatch[]>([]);
+  const { showError } = useContext(UIContext);
 
   useFocusEffect(
     useCallback(() => {
@@ -19,8 +21,8 @@ export const MatchHistory = () => {
           const jsonValue = await AsyncStorage.getItem('matches');
           if (jsonValue && jsonValue !== '[]')
             setHistory(JSON.parse(jsonValue));
-        } catch (e) {
-          // todo: error reading value
+        } catch (_) {
+          showError('Erro ao carregar o histórico de partidas');
         }
       }
 

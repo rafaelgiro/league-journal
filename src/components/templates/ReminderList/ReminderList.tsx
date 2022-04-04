@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
@@ -6,6 +6,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { Accordion } from '../../../components/molecules/Accordion';
 import { Reminder } from '../../../components/organisms/Reminder';
 import { AddButton } from '../../../components/atoms/AddButton';
+import { UIContext } from '../../../context/UI/UIContext';
 
 import { initialReminder } from './helpers';
 import { ReminderListProps } from './interfaces';
@@ -17,6 +18,7 @@ export const ReminderList = (props: ReminderListProps) => {
   const [expandedReminder, setExpandedReminder] = useState(0);
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+  const { showError } = useContext(UIContext);
 
   function handleChange(id: number, newValue: Reminder) {
     const newReminders = [...reminders];
@@ -52,8 +54,8 @@ export const ReminderList = (props: ReminderListProps) => {
           reminders.map((r) => ({ ...r, isNew: false }))
         );
         await AsyncStorage.setItem('reminders', newReminders);
-      } catch (e) {
-        // todo: error reading value
+      } catch (_) {
+        showError('Erro ao salvar os lembretes');
       }
     }
 
@@ -79,8 +81,8 @@ export const ReminderList = (props: ReminderListProps) => {
           await AsyncStorage.setItem('reminders', firstReminder);
           setReminders([initialReminder]);
         }
-      } catch (e) {
-        // todo: error reading value
+      } catch (_) {
+        showError('Erro ao carregar os lembretes');
       }
     }
 

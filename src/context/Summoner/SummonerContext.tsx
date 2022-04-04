@@ -3,10 +3,12 @@ import {
   Dispatch,
   FC,
   SetStateAction,
+  useContext,
   useEffect,
   useState
 } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { UIContext } from '../UI/UIContext';
 
 interface SummonerContextProps {
   summonerName?: string;
@@ -25,14 +27,15 @@ export const SummonerContext = createContext<SummonerContextProps>({
 export const SummonerProvider: FC = (props) => {
   const [server, setServer] = useState<Region>('br1');
   const [summonerName, setSummonerName] = useState<string>();
+  const { showError } = useContext(UIContext);
 
   useEffect(() => {
     async function saveSummoner() {
       try {
         const newValue = JSON.stringify({ server, summonerName });
         await AsyncStorage.setItem('summoner', newValue);
-      } catch (e) {
-        // todo: error reading value
+      } catch (_) {
+        showError('Erro ao salvar informações de invocador');
       }
     }
 
@@ -49,8 +52,8 @@ export const SummonerProvider: FC = (props) => {
           setServer(localSummoner.server);
           setSummonerName(localSummoner.summonerName);
         }
-      } catch (e) {
-        // todo: error reading value
+      } catch (_) {
+        showError('Erro ao carregar informações de invocador');
       }
     }
 

@@ -17,7 +17,7 @@ import { FindGame, HomeContainer } from './styles';
 export const Homescreen = () => {
   const theme = useTheme();
   const { server, summonerName } = useContext(SummonerContext);
-  const { setIsLoading } = useContext(UIContext);
+  const { setIsLoading, showAPIError } = useContext(UIContext);
   const { setCurrentMatch } = useContext(MatchContext);
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
@@ -27,6 +27,8 @@ export const Homescreen = () => {
       setIsLoading({ open: true, text: 'Procurando partida...' });
       try {
         const match = await findMatch(summonerName, server);
+        if (match.code) throw new Error(match.code);
+
         const { allyChampions, enemyChampions } = match.champions as {
           allyChampions: Champion[];
           enemyChampions: Champion[];
@@ -48,8 +50,8 @@ export const Homescreen = () => {
           enemyChampions,
           isAnswering: true
         });
-      } catch (error) {
-        // todo: error reading value
+      } catch (error: any) {
+        showAPIError(error.toString().replace('Error: ', ''));
       } finally {
         setIsLoading({ open: false, text: '' });
       }
