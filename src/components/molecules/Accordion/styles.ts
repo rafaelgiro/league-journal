@@ -35,4 +35,5 @@ export const EditableQuestionInput = styled.TextInput`
   font-size: 20px;
   font-family: 'PatrickHand_400Regular';
   letter-spacing: 1px;
+  color: ${(props) => props.theme.colors.text};
 `;
