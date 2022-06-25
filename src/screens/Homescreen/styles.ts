@@ -11,3 +11,15 @@ export const HomeContainer = styled.View`
   flex: 1;
   justify-content: space-between;
 `;
+
+export const AboutContainer = styled.View`
+  align-items: center;
+  opacity: 1;
+  margin-top: 56px;
+`;
+
+export const SocialLinks = styled.View`
+  flex-direction: row;
+  align-items: center;
+  margin-top: 16px;
+`;

@@ -7,6 +7,7 @@ import { Typography } from '../../components/atoms/Typography';
 import { MatchHistory } from '../../components/templates/MatchHistory';
 import { SavedItems } from '../../components/templates/SavedItems';
 import { Wrapper } from '../../components/templates/Wrapper';
+import { About } from './About';
 import { MatchContext } from '../../context/Match/MatchContext';
 import { SummonerContext } from '../../context/Summoner/SummonerContext';
 import { UIContext } from '../../context/UI/UIContext';
@@ -71,6 +72,7 @@ export const Homescreen = () => {
         </FindGame>
         <MatchHistory />
         <SavedItems />
+        <About />
       </HomeContainer>
     </Wrapper>
   );

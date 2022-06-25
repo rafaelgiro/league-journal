@@ -34,7 +34,7 @@ const darkTheme = {
   themeName: 'dark',
   colors: {
     background: '#000000',
-    text: '#F2F2F2',
+    text: '#DDDDDD',
     secondary: '#808080',
     error: '#E03F3F'
   }
